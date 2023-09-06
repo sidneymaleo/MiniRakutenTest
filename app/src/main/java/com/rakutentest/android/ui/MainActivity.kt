@@ -1,4 +1,4 @@
-package com.rakutentest.android
+package com.rakutentest.android.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
