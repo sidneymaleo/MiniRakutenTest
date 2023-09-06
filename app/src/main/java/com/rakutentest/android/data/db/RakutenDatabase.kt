@@ -1,6 +1,6 @@
 package com.rakutentest.android.data.db
 
-import androidx.room.Database
+/*import androidx.room.Database
 import androidx.room.RoomDatabase
 
 @Database(
@@ -10,4 +10,4 @@ import androidx.room.RoomDatabase
 )
 abstract class RakutenDatabase : RoomDatabase() {
 
-}
+}*/
