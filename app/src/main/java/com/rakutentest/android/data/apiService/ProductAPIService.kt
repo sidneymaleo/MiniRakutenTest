@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.Query
 import retrofit2.http.GET
 
-interface ProductService {
+interface ProductAPIService {
 
     @GET("/products/search")
     suspend fun getProducts(
