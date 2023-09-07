@@ -1,3 +1,41 @@
 
 =
 app/README.md,4/c/4c5b4e01137160a7f4b20b65b547907a29541367
+<
+build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
+?
+settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
+A
+gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
+X
+(gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
+@
+app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
+u
+Eapp/src/main/java/com/rakutentest/android/data/model/util/Resource.kt,2/e/2e25be976e720bb79ee5496ae660fe725c2521fa
+k
+;app/src/main/java/com/rakutentest/android/ui/theme/Color.kt,8/0/80742e89d53b06728ab37cfdef77b117cfefbab1
+j
+:app/src/main/java/com/rakutentest/android/ui/theme/Type.kt,b/2/b21701966c42f5a1792afccafc6a0c41666ba7f5
+k
+;app/src/main/java/com/rakutentest/android/ui/theme/shape.kt,7/1/710ba9bfac8bc764e2894ab31b9ad443263e1fbd
+k
+;app/src/main/java/com/rakutentest/android/ui/theme/Theme.kt,0/3/03c0839d9b292d8f3ea366ef8afa9a2511e80262
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+t
+Dapp/src/main/java/com/rakutentest/android/data/db/RakutenDatabase.kt,f/1/f13a38f6abfdb63a58fde6f269eff5d9f7e5173c
+p
+@app/src/main/java/com/rakutentest/android/ui/theme/Typography.kt,0/a/0ae974254bdd06c3e39a3eb1fcb8bf7b0df866dd
+g
+7app/src/main/java/com/rakutentest/android/RakutenApp.kt,e/0/e0d4bb3af89c91fcda1abfa6aa834e417a5d41bc
+l
+<app/src/main/java/com/rakutentest/android/ui/MainActivity.kt,4/3/43b101ac81fb8c7b34abb102520c89ee043b1a0d
+p
+@app/src/main/java/com/rakutentest/android/ui/views/LaunchView.kt,e/a/ea9fa96292e9fbb320712abb49ddbac405061046
+€
+Papp/src/main/java/com/rakutentest/android/ui/views/model/BottomNavigationItem.kt,2/2/2290f2118154fd19b4a1f576b7900672b6222996
+m
+=app/src/main/java/com/rakutentest/android/ui/views/HomeApp.kt,5/9/59faeedea073a4f40bd503dbecc088a51284efff
+q
+Aapp/src/main/java/com/rakutentest/android/ui/views/model/Route.kt,d/2/d2aea7409a0d092f12e419f9677ed1be2ee49b1a

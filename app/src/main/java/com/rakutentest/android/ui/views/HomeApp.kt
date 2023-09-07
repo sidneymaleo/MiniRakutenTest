@@ -1,10 +1,10 @@
 package com.rakutentest.android.ui.views
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-
 
 
 import androidx.compose.foundation.layout.*
@@ -27,6 +27,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.rakutentest.android.R
+import com.rakutentest.android.ui.views.bottomNavigationItems.AccountItem
+import com.rakutentest.android.ui.views.bottomNavigationItems.BasketItem
+import com.rakutentest.android.ui.views.bottomNavigationItems.CashBackItem
+import com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem
+import com.rakutentest.android.ui.views.bottomNavigationItems.SellItem
 import com.rakutentest.android.ui.views.model.BottomNavigationItem
 import com.rakutentest.android.ui.views.model.Route
 
@@ -44,22 +49,22 @@ fun HomeApp(navController: NavHostController) {
         BottomNavigationItem(
             Icons.Outlined.AllInclusive,
             stringResource(R.string.cash_back),
-            Route.homeTabView
+            Route.cashBackTabView
         ),
         BottomNavigationItem(
             Icons.Outlined.ShoppingCart,
             stringResource(R.string.basket),
-            Route.homeTabView
+            Route.basketTabView
         ),
         BottomNavigationItem(
             Icons.Outlined.EuroSymbol,
             stringResource(R.string.sell),
-            Route.homeTabView
+            Route.sellTabView
         ),
         BottomNavigationItem(
             Icons.Outlined.ManageAccounts,
-            stringResource(R.string.home),
-            Route.homeTabView
+            stringResource(R.string.account),
+            Route.accountTabView
         ),
     )
 
@@ -86,14 +91,44 @@ fun HomeApp(navController: NavHostController) {
                         actions = {
                             // RowScope here, so these icons will be placed horizontally
                             IconButton(onClick = { /* doSomething() */ }) {
-                                Icon(Icons.Outlined.FavoriteBorder, contentDescription = "Localized description")
+                                Icon(
+                                    Icons.Outlined.FavoriteBorder,
+                                    contentDescription = "Localized description"
+                                )
                             }
                         },
                         //we make elevation to zero because we want the plate view
                         elevation = 0.dp
                     )
 
-                }) { innerPadding -> }
+                }) { innerPadding ->
+
+                Column(modifier = Modifier.padding(innerPadding)) {
+
+                    // here we initialize our content home app views
+                    when (selectedItem.intValue) {
+                        0 -> {
+                            HomeItem()
+                        }
+
+                        1 -> {
+                            CashBackItem()
+                        }
+
+                        2 -> {
+                            BasketItem()
+                        }
+
+                        3 -> {
+                            SellItem()
+                        }
+
+                        else -> {
+                            AccountItem()
+                        }
+                    }
+                }
+            }
 
         },
         bottomBar = {
@@ -110,14 +145,16 @@ fun HomeApp(navController: NavHostController) {
                             Text(
                                 remember { item.title })
                         },
-                        selected = selectedItem.value == index,
+                        selected = selectedItem.intValue == index,
                         onClick = {
-                            selectedItem.value = index
+                            selectedItem.intValue = index
+                            Log.d("TestingMaleoMaleo", " displaying ${selectedItem.intValue}")
                             /*switch.value = index != 1*/
                         }
                     )
                 }
             }
-        }, floatingActionButton = {}, content = {})
+        }, floatingActionButton = {},
+        content = { paddingValue -> })
 }
 
