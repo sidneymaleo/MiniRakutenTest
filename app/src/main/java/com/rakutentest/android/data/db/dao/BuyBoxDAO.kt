@@ -13,8 +13,7 @@ import kotlinx.coroutines.flow.Flow
 interface BuyBoxDAO {
 
     @Query("""SELECT * FROM buybox_data_table
-        INNER JOIN buybox_data_table on buybox_data_table.buybox_productId = buybox_data_table.buybox_id
-        INNER JOIN product_data_table ON product_data_table.product_id = buybox_data_table.buybox_productId
+        INNER JOIN product_data_table ON buybox_data_table.buybox_productId = product_data_table.product_id
         WHERE product_data_table.product_id = :productId
     """)
     fun getBuyBoxForProductId(productId: Int): Flow<BuyboxRoom>
@@ -23,7 +22,7 @@ interface BuyBoxDAO {
     suspend fun insert(buybox: BuyboxRoom)
 
     @Query("SELECT * FROM buybox_data_table")
-    fun getAllBuyBox(): Flow<BuyboxRoom>
+    fun getAllBuyBox(): Flow<List<BuyboxRoom>>
 
     @Query("DELETE  FROM buybox_data_table")
     suspend fun deleteAllBuyBox()

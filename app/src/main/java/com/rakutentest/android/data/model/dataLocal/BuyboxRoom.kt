@@ -8,9 +8,10 @@ import androidx.room.PrimaryKey
 @Entity(
     tableName = "buybox_data_table",
     foreignKeys = [
-        ForeignKey(entity = ProductRoom::class,
-            parentColumns = ["id"],
-            childColumns = ["productId"],
+        ForeignKey(
+            entity = ProductRoom::class,
+            parentColumns = ["product_id"],
+            childColumns = ["buybox_productId"],
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.NO_ACTION)
     ]
@@ -27,7 +28,7 @@ data class BuyboxRoom(
     var advertQuality: String,
     @ColumnInfo("buybox_saleCrossedPrice")
     var saleCrossedPrice: Float,
-    @ColumnInfo("buybox_saleCrossedPrice")
+    @ColumnInfo("buybox_salePercentDiscount")
     var salePercentDiscount: Int,
     @ColumnInfo("buybox_isRefurbished")
     var isRefurbished: Boolean,
