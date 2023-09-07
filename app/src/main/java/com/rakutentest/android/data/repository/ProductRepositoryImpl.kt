@@ -1,6 +1,7 @@
 package com.rakutentest.android.data.repository
 
 import com.rakutentest.android.data.model.dataLocal.ProductRoom
+import com.rakutentest.android.data.model.dataRemote.response.ProductDetails
 import com.rakutentest.android.data.model.dataRemote.response.Products
 import com.rakutentest.android.data.repository.dataSource.product.ProductLocalDataSource
 import com.rakutentest.android.data.repository.dataSource.product.ProductRemoteDataSource
@@ -25,12 +26,34 @@ class ProductRepositoryImpl(
         }
         return Resource.Error(response.message())
     }
+
+    /**
+     * This method convert response to ressource products details
+     */
+    private fun responseToResourceProductDetails(response: Response<ProductDetails>): Resource<ProductDetails> {
+        if (response.isSuccessful) {
+            response.body()?.let { result ->
+                return Resource.Success(result)
+            }
+        }
+        return Resource.Error(response.message())
+    }
     override suspend fun getProducts(keyWord: String): Resource<Products> {
         return responseToResourceProducts(
             productRemoteDataSource.getProducts(
                 keyWord = keyWord
             )
         )
+    }
+
+
+
+    override suspend fun getProductDetails(id: Int): Resource<ProductDetails> {
+       return responseToResourceProductDetails(
+           productRemoteDataSource.getProductDetails(
+               id = id
+           )
+       )
     }
 
     override fun getLocalProducts(): Flow<List<ProductRoom>> {
