@@ -10,19 +10,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.rakutentest.android.R
+import com.rakutentest.android.ui.views.progressbar.SpinnerCenterVerticalHorizontal
 
 
 @Composable
 fun HomeItem() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        Text(
-            text = stringResource(R.string.home),
-            style = MaterialTheme.typography.displayLarge
-        )
-    }
+    SpinnerCenterVerticalHorizontal()
 }
