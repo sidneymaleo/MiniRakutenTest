@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">RakutenTest</string>
     <string name="e_commerce_all">E-Commerce for all</string>
+    <string name="home">Home</string>
+    <string name="cash_back">Cashback</string>
+    <string name="basket">Basket</string>
+    <string name="sell">Sell</string>
+    <string name="account">Account</string>
 </resources>

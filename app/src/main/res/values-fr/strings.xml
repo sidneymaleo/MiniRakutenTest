@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">RakutenTest</string>
     <string name="e_commerce_all">E-Commerce pour tous</string>
+    <string name="home">Accueil</string>
+    <string name="cash_back">Cashback</string>
+    <string name="basket">Panier</string>
+    <string name="sell">Vendre</string>
+    <string name="account">Compte</string>
 </resources>
