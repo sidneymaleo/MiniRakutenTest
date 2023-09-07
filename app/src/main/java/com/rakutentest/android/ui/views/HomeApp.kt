@@ -2,7 +2,6 @@ package com.rakutentest.android.ui.views
 
 import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
@@ -17,11 +16,8 @@ import androidx.compose.material.icons.outlined.EuroSymbol
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ManageAccounts
-import androidx.compose.material.icons.outlined.ShoppingBasket
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -30,7 +26,7 @@ import com.rakutentest.android.R
 import com.rakutentest.android.ui.views.bottomNavigationItems.AccountItem
 import com.rakutentest.android.ui.views.bottomNavigationItems.BasketItem
 import com.rakutentest.android.ui.views.bottomNavigationItems.CashBackItem
-import com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem
+import com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem.HomeItem
 import com.rakutentest.android.ui.views.bottomNavigationItems.SellItem
 import com.rakutentest.android.ui.views.model.BottomNavigationItem
 import com.rakutentest.android.ui.views.model.Route

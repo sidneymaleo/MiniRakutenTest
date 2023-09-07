@@ -1,4 +1,4 @@
-package com.rakutentest.android.ui.views.bottomNavigationItems
+package com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
