@@ -16,7 +16,7 @@ interface ProductDAO {
     suspend fun insert(product: ProductRoom)
 
     @Query("SELECT * FROM product_data_table")
-    fun getAllProduct(): Flow<ProductRoom>
+    fun getAllProduct(): Flow<List<ProductRoom>>
 
     @Query("DELETE  FROM product_data_table")
     suspend fun deleteAllProduct()

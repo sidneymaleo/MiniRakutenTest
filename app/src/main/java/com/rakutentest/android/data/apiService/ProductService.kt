@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface ProductService {
 
-    @GET("/api/address/search")
+    @GET("/products/search")
     suspend fun getProducts(
         @Query("keyword") keyWord : String
     ): Response<Products>

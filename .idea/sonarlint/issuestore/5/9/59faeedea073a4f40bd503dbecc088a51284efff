@@ -1,7 +1,3 @@
 
-Ukotlin:S1172#"6Remove this unused function parameter "navController".(å‚·™8áüÓç¦1
-^kotlin:S1172`"?Use "_" instead of this unused lambda parameter "innerPadding".(Òæ®Ó8âüÓç¦1
-9kotlin:S1128"Remove this unused import.(³ñ¥Ô8êüÓç¦1
->kotlin:S1128"Remove this unused import.(¬·æËşÿÿÿÿ8êüÓç¦1
->kotlin:S1128"Remove this unused import.(ˆ²ŞÎûÿÿÿÿ8êüÓç¦1
->kotlin:S1128"Remove this unused import.(‹‚ü†ıÿÿÿÿ8êüÓç¦1
+Ukotlin:S1172$"6Remove this unused function parameter "navController".(å‚·™8éöüö¦1
+_kotlin:S1172š"?Use "_" instead of this unused lambda parameter "paddingValue".(éÊ«†8êöüö¦1

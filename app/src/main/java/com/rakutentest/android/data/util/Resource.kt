@@ -1,4 +1,4 @@
-package com.rakutentest.android.data.model.util
+package com.rakutentest.android.data.util
 
 sealed class Resource<T>(
     val data: T? = null,
