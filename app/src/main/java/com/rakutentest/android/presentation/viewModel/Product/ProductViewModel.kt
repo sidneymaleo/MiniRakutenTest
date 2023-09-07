@@ -6,9 +6,11 @@ import com.rakutentest.android.domain.useCase.product.DeleteLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductDetailsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class ProductViewModel @Inject constructor(
     private val getRemoteProductsUseCase: GetRemoteProductsUseCase,
     private val getRemoteProductDetailsUseCase: GetRemoteProductDetailsUseCase,
