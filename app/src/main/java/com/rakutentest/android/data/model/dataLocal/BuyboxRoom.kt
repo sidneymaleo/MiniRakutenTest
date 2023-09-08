@@ -33,5 +33,5 @@ data class BuyboxRoom(
     @ColumnInfo("buybox_isRefurbished")
     var isRefurbished: Boolean,
     @ColumnInfo("buybox_productId")
-    var productId: Int
+    var productId: Long
 )

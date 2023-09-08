@@ -70,7 +70,7 @@ class ProductViewModel @Inject constructor(
                  * if we have several pages we can
                  * apply lazzy loading infinitely
                  */
-                //screenStateProducts.value.productList.addAll(products.products)
+                screenStateProducts.value.productList.addAll(products.products)
                 Log.d("TestingTesting1", "${products.maxPageNumber}/ ${products.pageNumber} / ${products.maxProductsPerPage} / ${products.resultProductsCount} / ${products.title} / ${products.totalResultProductsCount}")
                 // Here we upgrade our state
                 _screenStateProducts.value = _screenStateProducts.value.copy(

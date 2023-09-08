@@ -1,7 +1,6 @@
 package com.rakutentest.android.data.model.dataLocal
 
 import androidx.room.*
-import com.rakutentest.android.data.model.dataRemote.response.Product
 
 @Entity(
     tableName = "product_data_table"
@@ -9,7 +8,7 @@ import com.rakutentest.android.data.model.dataRemote.response.Product
 data class ProductRoom(
     @ColumnInfo(name = "product_id")
     @PrimaryKey(autoGenerate = false)
-    var id: Int?,
+    var id: Long?,
     @ColumnInfo("product_newBestPrice")
     var newBestPrice: Float,
     @ColumnInfo("product_usedBestPrice")

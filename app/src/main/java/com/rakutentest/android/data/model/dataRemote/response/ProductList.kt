@@ -15,6 +15,6 @@ data class ProductList(
     val maxProductsPerPage: Int,
     @SerializedName("maxPageNumber")
     val maxPageNumber: Int,
-    /*@SerializedName("products")
-    val products: List<Product>*/
+    @SerializedName("products")
+    val products: List<Product>
 )

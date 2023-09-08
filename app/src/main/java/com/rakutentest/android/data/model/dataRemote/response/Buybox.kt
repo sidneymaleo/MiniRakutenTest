@@ -11,7 +11,7 @@ data class Buybox(
     val advertQuality: String,
     @SerializedName("saleCrossedPrice")
     val saleCrossedPrice: Float,
-    @SerializedName("saleCrossedPrice")
+    @SerializedName("salePercentDiscount")
     val salePercentDiscount: Int,
     @SerializedName("isRefurbished")
     val isRefurbished: Boolean
