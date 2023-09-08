@@ -25,8 +25,10 @@ fun LaunchView() {
             //we make white if we have the light mode
             if (!isDark) {
                 this.background(Color.White)
+            } else {
+                this
             }
-             this
+
         },
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally

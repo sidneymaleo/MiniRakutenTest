@@ -8,11 +8,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -25,6 +23,7 @@ import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModelFactory
 import com.rakutentest.android.ui.views.HomeApp
 import com.rakutentest.android.ui.views.LaunchView
+import com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem.product.ProductDetailsView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -101,6 +100,13 @@ class MainActivity : ComponentActivity() {
                 BackHandler {
                     activity?.finish()
                 }
+            }
+
+            //This is our home view navigation initialize
+            composable(
+                route = Route.productDetailsView
+            ) {
+                ProductDetailsView()
             }
         }
     }

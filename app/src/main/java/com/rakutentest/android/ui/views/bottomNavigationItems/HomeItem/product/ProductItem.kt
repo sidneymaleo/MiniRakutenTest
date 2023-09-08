@@ -20,6 +20,7 @@ import com.rakutentest.android.data.model.dataRemote.response.Product
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -45,6 +46,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.rakutentest.android.R
 import com.rakutentest.android.data.model.dataRemote.response.ProductEnum
+import com.rakutentest.android.ui.views.model.Route
 
 
 @Composable
@@ -71,7 +73,9 @@ fun ProductItem(
 ) {
 
 
-    Box(Modifier.fillMaxSize()) {
+    Box(Modifier.fillMaxSize().clickable {
+        navController.navigate(Route.productDetailsView)
+    }) {
 
         Box(
             modifier = Modifier.align(Alignment.TopEnd)
