@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.rakutentest.android.R
+import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
 import com.rakutentest.android.ui.views.bottomNavigationItems.AccountItem
 import com.rakutentest.android.ui.views.bottomNavigationItems.BasketItem
 import com.rakutentest.android.ui.views.bottomNavigationItems.CashBackItem
@@ -33,7 +34,10 @@ import com.rakutentest.android.ui.views.model.Route
 
 
 @Composable
-fun HomeApp(navController: NavHostController) {
+fun HomeApp(
+    navController: NavHostController,
+    productViewModel: ProductViewModel
+) {
 
     //In this list we initialize our bottom navigation items
     val bottomNavigationItems = listOf(
@@ -104,7 +108,7 @@ fun HomeApp(navController: NavHostController) {
                     // here we initialize our content home app views
                     when (selectedItem.intValue) {
                         0 -> {
-                            HomeItem()
+                            HomeItem(navController = navController, productViewModel = productViewModel)
                         }
 
                         1 -> {

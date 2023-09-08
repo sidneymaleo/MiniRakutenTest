@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -14,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.rakutentest.android.R
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
+import com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem.product.ProductItem
 import com.rakutentest.android.ui.views.progressbar.SpinnerCenterVerticalHorizontal
 
 
@@ -25,10 +27,6 @@ fun HomeItem(
     //we get our screen state in our viewModel
     val screenState = productViewModel.screenStateProducts.value
 
-    //we display our spinner if we request our network
-    if (screenState.isLoad) {
-        SpinnerCenterVerticalHorizontal()
-    }
 
     /**
      * We build the LazyRow
@@ -36,6 +34,20 @@ fun HomeItem(
      * in the real application
      */
     LazyRow(state =  rememberLazyListState()) {
+        items(screenState.productList) {product ->
+            ProductItem(
+                navController = navController,
+                product = product,
+                productViewModel = productViewModel
+            )
+        }
+
+        //we display our spinner if we request our network
+        if (screenState.isLoad) {
+            items(count = 1) {
+                SpinnerCenterVerticalHorizontal()
+            }
+        }
 
     }
 }

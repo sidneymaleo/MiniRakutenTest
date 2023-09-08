@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import com.rakutentest.android.data.model.dataRemote.response.Product
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
 
+//In this UI we build our Row Card
 @Composable
 fun ProductItem(
     navController: NavHostController,
