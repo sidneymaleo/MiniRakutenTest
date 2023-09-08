@@ -15,4 +15,5 @@ data class ProductListScreenState (
     var productList : SnapshotStateList<Product> = mutableStateListOf(),
     var productRoomList: List<ProductRoom> = mutableListOf(),
     var isLoad: Boolean = false,
+    var isRequested: Boolean = true
 )

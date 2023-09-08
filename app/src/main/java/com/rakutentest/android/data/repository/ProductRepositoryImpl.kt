@@ -2,7 +2,7 @@ package com.rakutentest.android.data.repository
 
 import com.rakutentest.android.data.model.dataLocal.ProductRoom
 import com.rakutentest.android.data.model.dataRemote.response.ProductDetails
-import com.rakutentest.android.data.model.dataRemote.response.Products
+import com.rakutentest.android.data.model.dataRemote.response.ProductList
 import com.rakutentest.android.data.repository.dataSource.product.ProductLocalDataSource
 import com.rakutentest.android.data.repository.dataSource.product.ProductRemoteDataSource
 import com.rakutentest.android.data.util.Resource
@@ -18,7 +18,7 @@ class ProductRepositoryImpl(
     /**
      * This method convert response to ressource products
      */
-    private fun responseToResourceProducts(response: Response<Products>): Resource<Products> {
+    private fun responseToResourceProducts(response: Response<ProductList>): Resource<ProductList> {
         if (response.isSuccessful) {
             response.body()?.let { result ->
                 return Resource.Success(result)
@@ -38,7 +38,7 @@ class ProductRepositoryImpl(
         }
         return Resource.Error(response.message())
     }
-    override suspend fun getProducts(keyWord: String): Resource<Products> {
+    override suspend fun getProducts(keyWord: String): Resource<ProductList> {
         return responseToResourceProducts(
             productRemoteDataSource.getProducts(
                 keyWord = keyWord

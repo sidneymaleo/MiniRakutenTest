@@ -1,5 +1,6 @@
 package com.rakutentest.android.presentation.viewModel.Product
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -69,19 +70,22 @@ class ProductViewModel @Inject constructor(
                  * if we have several pages we can
                  * apply lazzy loading infinitely
                  */
-                screenStateProducts.value.productList.addAll(products.products)
+                //screenStateProducts.value.productList.addAll(products.products)
+                Log.d("TestingTesting1", "${products.maxPageNumber}/ ${products.pageNumber} / ${products.maxProductsPerPage} / ${products.resultProductsCount} / ${products.title} / ${products.totalResultProductsCount}")
                 // Here we upgrade our state
                 _screenStateProducts.value = _screenStateProducts.value.copy(
                     isLoad = false,
                     isNetworkConnected = true,
-                    isNetworkError = false
+                    isNetworkError = false,
+                    isRequested = false
                 )
             }
         } catch (e: Exception) {
             _screenStateProducts.value = _screenStateProducts.value.copy(
                 isNetworkConnected = true,
                 isNetworkError = true,
-                isLoad = false
+                isLoad = false,
+                isRequested = false
             )
         }
     }
