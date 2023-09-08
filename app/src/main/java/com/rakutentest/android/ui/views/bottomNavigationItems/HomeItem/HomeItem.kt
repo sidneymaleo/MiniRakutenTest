@@ -3,10 +3,13 @@ package com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -51,7 +54,7 @@ fun HomeItem(
     val screenState = productViewModel.screenStateProducts.value
     //this variable help use
     // to observe the state of our keyup product search value
-    var searchProduct by rememberSaveable { mutableStateOf("") }
+    var searchProduct by rememberSaveable { mutableStateOf("Samsung") }
     //we get our application context
     val context = LocalContext.current
 
@@ -85,31 +88,38 @@ fun HomeItem(
                 .height(55.dp),
             shape = RoundedCornerShape(4.dp)
         )
-    }
-
-
-    /**
-     * We build the LazyRow
-     * to illustrate a UI as
-     * in the real application
-     */
-    LazyRow(state =  rememberLazyListState()) {
-        items(screenState.productList) {product ->
-            ProductItem(
-                navController = navController,
-                product = product,
-                productViewModel = productViewModel
-            )
-        }
 
         //we display our spinner if we request our network
         if (screenState.isLoad) {
-            items(count = 1) {
-                SpinnerCenterVerticalHorizontal()
-            }
+            SpinnerCenterVerticalHorizontal()
         }
 
+        Row {
+
+            /**
+             * We build the LazyRow
+             * to illustrate a UI as
+             * in the real application
+             */
+            LazyColumn(
+                state =  rememberLazyListState(),
+                contentPadding = PaddingValues(top = 20.dp)
+            ) {
+                items(screenState.productList) {product ->
+                    ProductItem(
+                        navController = navController,
+                        product = product,
+                        productViewModel = productViewModel
+                    )
+                }
+
+
+
+            }
+        }
     }
+
+
 
     LaunchedEffect(key1 = screenState.isRequested) {
         //we call our api

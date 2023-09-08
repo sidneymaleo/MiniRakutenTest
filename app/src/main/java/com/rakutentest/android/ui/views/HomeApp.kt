@@ -103,7 +103,9 @@ fun HomeApp(
 
                 }) { innerPadding ->
 
-                Column(modifier = Modifier.padding(innerPadding)) {
+                Column(
+                    modifier = Modifier.padding(innerPadding)
+                ) {
 
                     // here we initialize our content home app views
                     when (selectedItem.intValue) {
@@ -148,8 +150,6 @@ fun HomeApp(
                         selected = selectedItem.intValue == index,
                         onClick = {
                             selectedItem.intValue = index
-                            Log.d("TestingMaleoMaleo", " displaying ${selectedItem.intValue}")
-                            /*switch.value = index != 1*/
                         }
                     )
                 }
