@@ -40,6 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.rakutentest.android.R
@@ -192,12 +193,14 @@ fun ProductItem(
                             }
 
                             Text(
-                                text = "${product.nbReviews} avis",
+                                text = "${product.nbReviews} "+stringResource(R.string.notice),
                                 fontSize = 10.sp,
                                 modifier = Modifier.padding(start = 10.dp)
                             )
                         }
 
+                        // here we test our advert Type
+                        // for display the good informations
                         if ((product.buybox.advertType).equals(ProductEnum.NEW.name) ) {
                             Row {
                                 Text(
@@ -208,7 +211,7 @@ fun ProductItem(
                                 )
 
                                 Text(
-                                    text = " Neuf",
+                                    text = stringResource(R.string.new_value),
                                     color = Color.Red,
                                     fontSize = 15.sp,
                                 )
@@ -216,7 +219,7 @@ fun ProductItem(
                         } else if ((product.buybox.advertType).equals(ProductEnum.USED.name)) {
                             Row {
                                 Text(
-                                    text = "Occasion dès ",
+                                    text = stringResource(R.string.occasion),
                                     fontSize = 15.sp,
                                 )
 

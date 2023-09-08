@@ -6,4 +6,7 @@
     <string name="basket">Panier</string>
     <string name="sell">Vendre</string>
     <string name="account">Compte</string>
+    <string name="occasion">Occasion dès </string>
+    <string name="notice">avis</string>
+    <string name="new_value"> Neuf</string>
 </resources>
