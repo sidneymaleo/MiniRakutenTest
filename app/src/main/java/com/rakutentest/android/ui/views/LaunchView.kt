@@ -1,6 +1,7 @@
 package com.rakutentest.android.ui.views
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -20,7 +21,15 @@ fun LaunchView() {
     val isDark = isSystemInDarkTheme()
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().run {
+            //we make white if we have the light mode
+            if (!isDark) {
+                this.background(Color.White)
+            } else {
+                this
+            }
+
+        },
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
