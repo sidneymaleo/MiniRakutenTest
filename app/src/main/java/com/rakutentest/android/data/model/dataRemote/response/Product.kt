@@ -12,7 +12,7 @@ data class Product(
     @SerializedName("headline")
     val headline: String,
     @SerializedName("reviewsAverageNote")
-    val reviewsAverageNote: Float,
+    val reviewsAverageNote: Double,
     @SerializedName("nbReviews")
     val nbReviews: Int,
     @SerializedName("categoryRef")

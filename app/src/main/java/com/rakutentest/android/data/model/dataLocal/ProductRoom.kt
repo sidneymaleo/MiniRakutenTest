@@ -16,7 +16,7 @@ data class ProductRoom(
     @ColumnInfo("product_headline")
     var headline: String,
     @ColumnInfo("product_reviewsAverageNote")
-    var reviewsAverageNote: Float,
+    var reviewsAverageNote: Double,
     @ColumnInfo("product_nbReviews")
     val nbReviews: Int,
     @ColumnInfo("product_categoryRef")

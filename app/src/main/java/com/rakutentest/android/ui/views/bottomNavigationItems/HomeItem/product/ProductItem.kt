@@ -31,13 +31,19 @@ import androidx.compose.material.Divider
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.icons.outlined.StarHalf
+import androidx.compose.material.icons.outlined.StarOutline
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.rakutentest.android.R
+import com.rakutentest.android.data.model.dataRemote.response.ProductEnum
 
 
 @Composable
@@ -51,6 +57,7 @@ fun getProductImage(image: String): Painter {
  * part of our notation
  */
 fun getDecimalPart(value: Double) {
+    val intValue = value.toInt()
 
 }
 
@@ -76,7 +83,7 @@ fun ProductItem(
                     Icons.Outlined.FavoriteBorder,
                     contentDescription = "Localized description",
                     modifier = Modifier
-                        .padding(bottom = 20.dp)
+                        .padding(bottom = 22.dp)
                         .wrapContentWidth()
                         .wrapContentHeight()
                 )
@@ -94,7 +101,7 @@ fun ProductItem(
                             contentDescription = "Profile picture description",
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
-                                .padding(top = 20.dp, bottom = 20.dp, start = 10.dp, end = 10.dp)
+                                .padding(top = 20.dp, bottom = 20.dp, start = 5.dp, end = 5.dp)
                                 .height(100.dp)
                                 .width(100.dp)
                         )
@@ -124,21 +131,102 @@ fun ProductItem(
                         )
 
                         Row {
-                            IconButton(onClick = { /* doSomething() */ }, modifier = Modifier
-                                .padding(bottom = 10.dp)
-                                .wrapContentWidth()
-                                .wrapContentHeight()) {
+
+                            /**
+                             * Here we build our star notation,
+                             * the idea here is first to set up
+                             * the integer part and then complete
+                             * the decomal part
+                             */
+                            var countValue = product.reviewsAverageNote?.toInt()
+                            for (i in 1 ..countValue!!) {
                                 Icon(
                                     Icons.Outlined.Star,
                                     contentDescription = "Localized description",
                                     modifier = Modifier
-                                        .padding(bottom = 20.dp)
+                                        .padding(bottom = 5.dp)
                                         .wrapContentWidth()
-                                        .wrapContentHeight()
+                                        .wrapContentHeight(),
+                                    tint = colorResource(R.color.yellow400)
+                                )
+                            }
+
+                            // We retrieve the decimal part
+                            val decimalPartValue = (product.reviewsAverageNote - countValue)
+                            /**
+                             * We test if it is greater
+                             * than or equal to 0.5
+                             * to add the half star
+                             */
+                            if (decimalPartValue >= 0.5) {
+                                Icon(
+                                    Icons.Outlined.StarHalf,
+                                    contentDescription = "Localized description",
+                                    modifier = Modifier
+                                        .padding(bottom = 5.dp)
+                                        .wrapContentWidth()
+                                        .wrapContentHeight(),
+                                    tint = colorResource(R.color.yellow400)
+                                )
+                                //we increment countValue
+                                countValue++
+                            }
+
+                            val stayValue = 5 - countValue
+                            /**
+                             * If the remainder is greater than 0,
+                             * the remaining stars are added
+                             */
+                            if (stayValue > 0) {
+                                for (i in 1 ..stayValue) {
+                                    Icon(
+                                        Icons.Outlined.StarOutline,
+                                        contentDescription = "Localized description",
+                                        modifier = Modifier
+                                            .padding(bottom = 5.dp)
+                                            .wrapContentWidth()
+                                            .wrapContentHeight(),
+                                        tint = colorResource(R.color.yellow400)
+                                    )
+                                }
+                            }
+
+                            Text(
+                                text = "${product.nbReviews} avis",
+                                fontSize = 10.sp,
+                                modifier = Modifier.padding(start = 10.dp)
+                            )
+                        }
+
+                        if ((product.buybox.advertType).equals(ProductEnum.NEW.name) ) {
+                            Row {
+                                Text(
+                                    text = "${product.newBestPrice} €",
+                                    color = Color.Red,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+
+                                Text(
+                                    text = " Neuf",
+                                    color = Color.Red,
+                                    fontSize = 15.sp,
+                                )
+                            }
+                        } else if ((product.buybox.advertType).equals(ProductEnum.USED.name)) {
+                            Row {
+                                Text(
+                                    text = "Occasion dès ",
+                                    fontSize = 15.sp,
+                                )
+
+                                Text(
+                                    text = "${product.usedBestPrice} €",
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 20.sp
                                 )
                             }
                         }
-
                     }
                 }
 
