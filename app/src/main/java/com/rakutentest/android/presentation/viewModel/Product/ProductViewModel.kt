@@ -71,7 +71,6 @@ class ProductViewModel @Inject constructor(
                  * apply lazzy loading infinitely
                  */
                 screenStateProducts.value.productList.addAll(products.products)
-                //Log.d("TestingTesting1", "${products.products.toString()}")
                 // Here we upgrade our state
                 _screenStateProducts.value = _screenStateProducts.value.copy(
                     isLoad = false,
@@ -93,7 +92,7 @@ class ProductViewModel @Inject constructor(
 
     // Here we make our http Request to get our product details
     fun getRemoteProductDetails(
-        id: Int
+        id: Long
     ) = viewModelScope.launch {
         try {
             val apiResult = getRemoteProductDetailsUseCase.execute(id = id)

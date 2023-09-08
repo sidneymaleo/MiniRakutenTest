@@ -54,15 +54,6 @@ fun getProductImage(image: String): Painter {
     return rememberAsyncImagePainter(image)
 }
 
-/**
- * this method helps us
- * to retrieve the decimal
- * part of our notation
- */
-fun getDecimalPart(value: Double) {
-    val intValue = value.toInt()
-
-}
 
 //In this UI we build our Row Card
 @Composable

@@ -106,7 +106,7 @@ class MainActivity : ComponentActivity() {
             composable(
                 route = Route.productDetailsView
             ) {
-                ProductDetailsView()
+                ProductDetailsView(productViewModel = productViewModel)
             }
         }
     }
