@@ -6,5 +6,5 @@ data class Image(
     @SerializedName("imagesUrls")
     val imagesUrls: ImagesUrls,
     @SerializedName("id")
-    val id: Int
+    val id: Long
 )

@@ -13,7 +13,7 @@ class ProductRemoteDataSourceImpl(
        return productAPIService.getProducts(keyWord = keyWord)
     }
 
-    override suspend fun getProductDetails(id: Int): Response<ProductDetails> {
+    override suspend fun getProductDetails(id: Long): Response<ProductDetails> {
         return productAPIService.getProducDetails(id = id)
     }
 }

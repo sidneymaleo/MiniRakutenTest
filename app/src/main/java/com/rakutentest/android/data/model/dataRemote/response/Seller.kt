@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Seller(
     @SerializedName("id")
-    val id: Int,
+    val id: Long,
     @SerializedName("login")
     val login: String
 )

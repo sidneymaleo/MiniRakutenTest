@@ -101,11 +101,17 @@ class ProductViewModel @Inject constructor(
                     isLoad = false,
                     isNetworkConnected = true,
                     isNetworkError = false,
-                    productDetails = productDetails
+                    productDetails = productDetails,
+                    isRequested = false
                 )
             }
-        }catch (e: Exception) {
-
+        } catch (e: Exception) {
+            _screenStateProductDetails.value = _screenStateProductDetails.value.copy(
+                isNetworkConnected = true,
+                isNetworkError = true,
+                isLoad = false,
+                isRequested = false
+            )
         }
     }
 

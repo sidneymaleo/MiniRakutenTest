@@ -94,7 +94,10 @@ class MainActivity : ComponentActivity() {
             composable(
                 route = Route.homeView
             ) {
-                HomeApp(navController = navController, productViewModel = productViewModel)
+                HomeApp(
+                    navController = navController,
+                    productViewModel = productViewModel
+                )
                 //this instruction help the user to exit of the app
                 //after he press the back button
                 BackHandler {
@@ -106,7 +109,10 @@ class MainActivity : ComponentActivity() {
             composable(
                 route = Route.productDetailsView
             ) {
-                ProductDetailsView(productViewModel = productViewModel)
+                ProductDetailsView(
+                    navController = navController,
+                    productViewModel = productViewModel
+                )
             }
         }
     }

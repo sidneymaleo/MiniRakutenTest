@@ -17,12 +17,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.rakutentest.android.R
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
 import com.rakutentest.android.ui.UIEvent.Event.ProductEvent
+import com.rakutentest.android.ui.views.progressbar.SpinnerCenterVerticalHorizontal
 
 @Composable
 fun ProductDetailsView(
+    navController: NavHostController,
     productViewModel: ProductViewModel
 ){
 
@@ -39,7 +42,9 @@ fun ProductDetailsView(
                     TopAppBar(
                         backgroundColor = MaterialTheme.colorScheme.surface,
                         navigationIcon = {
-                            IconButton(onClick = { /* doSomething() */ }) {
+                            IconButton(onClick = {
+                                navController.navigateUp()
+                            }) {
                                 Icon(
                                     Icons.Outlined.ArrowBack,
                                     contentDescription = "Localized description"
@@ -75,6 +80,11 @@ fun ProductDetailsView(
                 Column(
                     modifier = Modifier.padding(innerPadding)
                 ) {
+
+                    //we display our spinner if we request our network
+                    if (screenState.isLoad) {
+                        SpinnerCenterVerticalHorizontal()
+                    }
 
                 }
             }

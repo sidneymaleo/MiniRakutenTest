@@ -147,3 +147,7 @@ Wapp/src/main/java/com/rakutentest/android/data/model/dataRemote/response/Produc
 Zapp/src/main/java/com/rakutentest/android/ui/UIEvent/ScreenState/ProductListScreenState.kt,a/d/ad7e637d1cf40d8c84d0ca3d1284cc8311481a02
 Œ
 \app/src/main/java/com/rakutentest/android/presentation/viewModel/Product/ProductViewModel.kt,2/9/299184425eb99c282d14e10d755a40d04c0eec31
+‡
+Wapp/src/main/java/com/rakutentest/android/data/model/dataRemote/response/ProductEnum.kt,8/b/8b3a8c812e16a3f9ea97ab03ea2abab5bd978c4e
+Ÿ
+oapp/src/main/java/com/rakutentest/android/ui/views/bottomNavigationItems/HomeItem/product/ProductDetailsView.kt,a/6/a689d39483bc2c6125a2805140bd507cb5587130
