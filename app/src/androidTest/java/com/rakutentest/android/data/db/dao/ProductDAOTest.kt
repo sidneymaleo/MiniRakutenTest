@@ -72,7 +72,7 @@ class ProductDAOTest {
     }
 
     @Test
-    fun get_all_database_product_Test() = runTest {
+    fun get_all_database_products_Test() = runTest {
         //before we insert our product data
         products.forEach {productRoom ->
             dao.insert(product = productRoom)
@@ -83,6 +83,34 @@ class ProductDAOTest {
             //we get our flow item
             val products = awaitItem()
             Truth.assertThat(products.size).isEqualTo(2)
+            //we test our first item headline
+            Truth.assertThat(products[0].headline).isEqualTo("Samsung Galaxy S21 5G 128 Go Double SIM Violet")
+            cancel()
+        }
+    }
+    
+    @Test
+    fun delete_all_products_Test() = runTest { 
+        //we insert our product before to delete it
+        products.forEach {productRoom ->
+            dao.insert(product = productRoom)
+        }
+
+        //we test we have really two item
+        dao.getAllProduct().test {
+            //we get our flow item
+            val products = awaitItem()
+            Truth.assertThat(products.size).isEqualTo(2)
+            cancel()
+        }
+        //we delete our all product
+        dao.deleteAllProduct()
+        //we test if we have 0 element in our products list
+        dao.getAllProduct().test {
+            //we get our flow item
+            val products = awaitItem()
+            Truth.assertThat(products.size).isEqualTo(0)
+            cancel()
         }
     }
 
