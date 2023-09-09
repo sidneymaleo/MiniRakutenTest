@@ -1,12 +1,16 @@
 package com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem.product
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,6 +22,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Divider
 import androidx.compose.material.Surface
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -29,6 +34,7 @@ import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -38,6 +44,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,6 +52,7 @@ import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
 import com.rakutentest.android.R
+import com.rakutentest.android.data.model.dataRemote.response.enums.ProductImageSizeEnum
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
 import com.rakutentest.android.ui.UIEvent.Event.ProductEvent
 import com.rakutentest.android.ui.views.progressbar.SpinnerCenterVerticalHorizontal
@@ -74,7 +82,7 @@ fun ProductDetailsView(
                             }) {
                                 Icon(
                                     Icons.Outlined.ArrowBack,
-                                    contentDescription = "Localized description"
+                                    contentDescription = null
                                 )
                             }
                         },
@@ -86,14 +94,14 @@ fun ProductDetailsView(
                             IconButton(onClick = { /* doSomething() */ }) {
                                 Icon(
                                     Icons.Outlined.Share,
-                                    contentDescription = "Localized description"
+                                    contentDescription = null
                                 )
                             }
 
                             IconButton(onClick = { /* doSomething() */ }) {
                                 Icon(
                                     Icons.Outlined.Search,
-                                    contentDescription = "Localized description"
+                                    contentDescription = null
                                 )
                             }
 
@@ -104,42 +112,91 @@ fun ProductDetailsView(
 
                 }) { innerPadding ->
 
-                Column(
-                    modifier = Modifier.padding(innerPadding)
-                ) {
+                //we test if product details is not null after
+                // to display our ui
+                if (screenState.productDetails !== null) {
+                    Column(
+                        modifier = Modifier.padding(innerPadding)
+                    ) {
 
-                    //we display our spinner if we request our network
-                    if (screenState.isLoad) {
-                        SpinnerCenterVerticalHorizontal()
-                    }
+                        //we display our spinner if we request our network
+                        if (screenState.isLoad) {
+                            SpinnerCenterVerticalHorizontal()
+                        }
 
-                    }*/
-                    //here we call our corousel
-                    CarouselProductImage(
-                        itemsCount = screenState.productDetails?.images!!.size,
-                        itemContent = { index ->
+                        //we test if our productDetails is not null
+                        if (screenState.productDetails !== null) {
+                            //we we test the product details images size
+                            if(screenState.productDetails?.images!!.isNotEmpty()) {
+                                //here we call our corousel
+                                CarouselProductImage(
+                                    itemsCount = screenState.productDetails?.images!!.size,
+                                    itemContent = { index ->
 
-                            Image(
-                                painter = getProductImage(
-                                    screenState.productDetails?.images!![index].imagesUrls.entry.filter {
-                                        /**
-                                         * here I'm just testing the original
-                                         * because I don't have enough time to
-                                         * manage all the screen sizes to use this image
-                                         * rendering api optimizer for display depending on the screen
-                                         */
-                                        it.size === "ORIGINAL"
-                                    }[0].url
-                                ),
-                                contentDescription = "Profile picture description",
-                                contentScale = ContentScale.Crop,
+                                        Column(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            verticalArrangement = Arrangement.Center,
+                                            horizontalAlignment = Alignment.CenterHorizontally
+                                        ){
+
+                                            Image(
+                                                //here we call getProductImage
+                                                painter = getProductImage(
+                                                    image = screenState.productDetails?.images!![index].imagesUrls.entry.filter {
+                                                        /**
+                                                         * here I'm just testing the original
+                                                         * because I don't have enough time to
+                                                         * manage all the screen sizes to use this image
+                                                         * rendering api optimizer for display depending on the screen
+                                                         */
+                                                        it.size == ProductImageSizeEnum.ORIGINAL.name
+                                                    }[0].url
+                                                ),
+                                                contentDescription = null,
+                                                contentScale = ContentScale.Crop,
+                                                modifier = Modifier.height(200.dp)
+                                            )
+
+                                        }
+                                    }
+                                )
+
+                            }
+                        }
+
+                        //we add our add the divider
+                        Row {
+                            Divider(
+                                color = Color.Gray,
                                 modifier = Modifier
-                                    .padding(top = 20.dp, bottom = 20.dp, start = 5.dp, end = 5.dp)
-                                    .height(100.dp)
-                                    .width(100.dp)
+                                    .padding(top = 15.dp, bottom = 15.dp)
+                                    .fillMaxWidth()
+                                    .height(0.20.dp),
                             )
                         }
-                    )
+
+                        // here build our headline block
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = "${screenState.productDetails!!.headline}",
+                                modifier = Modifier.padding(top = 2.dp, start = 20.dp, end = 20.dp),
+                                fontSize = 15.sp
+                            )
+                        }
+
+                        Row(
+                            modifier = Modifier.padding(start = 20.dp)
+                        ) {
+                            ProductStarHandle(
+                                score = screenState.productDetails!!.globalRating.score,
+                                nbReviews = screenState.productDetails!!.globalRating.nbReviews
+                            )
+                        }
+
+                    }
                 }
             }
         },
@@ -183,8 +240,9 @@ fun DotsIndicator(
     modifier: Modifier = Modifier,
     totalDots: Int,
     selectedIndex: Int,
-    selectedColor: Color = Color.Yellow /* Color.Yellow */,
-    unSelectedColor: Color = Color.Gray  /* Color.Gray */
+    selectedColor: Color =  colorResource(R.color.GrayLight),
+    //We decrease the opacity of our gray to make it lighter
+    unSelectedColor: Color = Color.Gray.copy(alpha = 0.5f)
 ) {
     LazyRow(
         modifier = modifier
@@ -210,7 +268,11 @@ fun DotsIndicator(
 @Composable
 fun CarouselProductImage(
     modifier: Modifier = Modifier,
-    autoSlideDuration: Long = 10,
+    /**
+     * We make it to max value because we want to fix our slideDuration
+     * While making sure to make it automatic again if we change our minds
+     */
+    autoSlideDuration: Long = Long.MAX_VALUE,
     itemsCount: Int,
     itemContent: @Composable (index: Int) -> Unit,
 ) {
@@ -238,7 +300,7 @@ fun CarouselProductImage(
                 .padding(bottom = 8.dp)
                 .align(Alignment.BottomCenter),
             shape = CircleShape,
-            color = Color.Black.copy(alpha = 0.5f)
+            color = Color.Transparent
         ) {
             DotsIndicator(
                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),

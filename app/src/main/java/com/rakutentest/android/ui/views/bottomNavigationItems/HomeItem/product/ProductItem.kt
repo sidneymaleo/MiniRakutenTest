@@ -1,11 +1,9 @@
 package com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem.product
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,14 +12,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
-import com.google.android.material.shape.CornerSize
-import com.rakutentest.android.BuildConfig
 import com.rakutentest.android.data.model.dataRemote.response.Product
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -38,17 +32,19 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.rakutentest.android.R
-import com.rakutentest.android.data.model.dataRemote.response.ProductEnum
+import com.rakutentest.android.data.model.dataRemote.response.enums.ProductEnum
 import com.rakutentest.android.ui.views.model.Route
 
 
+/**
+ * This function help us to display our image
+ */
 @Composable
 fun getProductImage(image: String): Painter {
     return rememberAsyncImagePainter(image)
@@ -77,7 +73,7 @@ fun ProductItem(
                 .wrapContentHeight()) {
                 Icon(
                     Icons.Outlined.FavoriteBorder,
-                    contentDescription = "Localized description",
+                    contentDescription = null,
                     modifier = Modifier
                         .padding(bottom = 22.dp)
                         .wrapContentWidth()
@@ -94,7 +90,7 @@ fun ProductItem(
                     if (product.imagesUrls.isNotEmpty()) {
                         Image(
                             painter = getProductImage(product.imagesUrls[0]),
-                            contentDescription = "Profile picture description",
+                            contentDescription = null,
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .padding(top = 20.dp, bottom = 20.dp, start = 5.dp, end = 5.dp)
@@ -105,6 +101,7 @@ fun ProductItem(
 
 
                     Column {
+
                         Row {
                             Text(
                                 text = product.headline,
@@ -125,75 +122,8 @@ fun ProductItem(
                             fontSize = 10.sp
 
                         )
-
-                        Row {
-
-                            /**
-                             * Here we build our star notation,
-                             * the idea here is first to set up
-                             * the integer part and then complete
-                             * the decomal part
-                             */
-                            var countValue = product.reviewsAverageNote?.toInt()
-                            for (i in 1 ..countValue!!) {
-                                Icon(
-                                    Icons.Outlined.Star,
-                                    contentDescription = "Localized description",
-                                    modifier = Modifier
-                                        .padding(bottom = 5.dp)
-                                        .wrapContentWidth()
-                                        .wrapContentHeight(),
-                                    tint = colorResource(R.color.yellow400)
-                                )
-                            }
-
-                            // We retrieve the decimal part
-                            val decimalPartValue = (product.reviewsAverageNote - countValue)
-                            /**
-                             * We test if it is greater
-                             * than or equal to 0.5
-                             * to add the half star
-                             */
-                            if (decimalPartValue >= 0.5) {
-                                Icon(
-                                    Icons.Outlined.StarHalf,
-                                    contentDescription = "Localized description",
-                                    modifier = Modifier
-                                        .padding(bottom = 5.dp)
-                                        .wrapContentWidth()
-                                        .wrapContentHeight(),
-                                    tint = colorResource(R.color.yellow400)
-                                )
-                                //we increment countValue
-                                countValue++
-                            }
-
-                            val stayValue = 5 - countValue
-                            /**
-                             * If the remainder is greater than 0,
-                             * the remaining stars are added
-                             */
-                            if (stayValue > 0) {
-                                for (i in 1 ..stayValue) {
-                                    Icon(
-                                        Icons.Outlined.StarOutline,
-                                        contentDescription = "Localized description",
-                                        modifier = Modifier
-                                            .padding(bottom = 5.dp)
-                                            .wrapContentWidth()
-                                            .wrapContentHeight(),
-                                        tint = colorResource(R.color.yellow400)
-                                    )
-                                }
-                            }
-
-                            Text(
-                                text = "${product.nbReviews} "+stringResource(R.string.notice),
-                                fontSize = 10.sp,
-                                modifier = Modifier.padding(start = 10.dp)
-                            )
-                        }
-
+                        //Here we display our star
+                        ProductStarHandle(score = product.reviewsAverageNote, nbReviews = product.nbReviews)
                         // here we test our advert Type
                         // for display the good informations
                         if ((product.buybox.advertType).equals(ProductEnum.NEW.name) ) {
