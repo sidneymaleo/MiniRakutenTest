@@ -1,0 +1,391 @@
+{
+  "totalResultProductsCount": 10000,
+  "resultProductsCount": 20,
+  "pageNumber": 1,
+  "title": "Samsung",
+  "maxProductsPerPage": 20,
+  "maxPageNumber": 30,
+  "products": [
+    {
+      "id": 6035914280,
+      "newBestPrice": 689.99,
+      "usedBestPrice": 640,
+      "headline": "Samsung Galaxy S21 5G 128 Go Double SIM Violet",
+      "reviewsAverageNote": 4.627659574468085,
+      "nbReviews": 94,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1673299896.jpg"
+      ],
+      "buybox": {
+        "salePrice": 689.99,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 859,
+        "salePercentDiscount": 19
+      }
+    },
+    {
+      "id": 5504650604,
+      "newBestPrice": 475.95,
+      "usedBestPrice": 415,
+      "headline": "Samsung Galaxy S20 FE 5G 128 Go 6.7 pouces Bleu Double Sim",
+      "reviewsAverageNote": 4.570707070707071,
+      "nbReviews": 198,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1511640339.jpg"
+      ],
+      "buybox": {
+        "salePrice": 475.95,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 759,
+        "salePercentDiscount": 37
+      }
+    },
+    {
+      "id": 6035617272,
+      "newBestPrice": 738.9,
+      "usedBestPrice": 600,
+      "headline": "Samsung Galaxy S21 5G 128 Go Double SIM Gris phantôme",
+      "reviewsAverageNote": 4.722222222222222,
+      "nbReviews": 72,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1653097635.jpg"
+      ],
+      "buybox": {
+        "salePrice": 738.9,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 859,
+        "salePercentDiscount": 13
+      }
+    },
+    {
+      "id": 6035617287,
+      "newBestPrice": 837,
+      "usedBestPrice": 0,
+      "headline": "Samsung Galaxy S21+ 5G 256 Go Double SIM Violet",
+      "reviewsAverageNote": 4.711864406779661,
+      "nbReviews": 59,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1673299879.jpg"
+      ],
+      "buybox": {
+        "salePrice": 837,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 1109,
+        "salePercentDiscount": 24
+      }
+    },
+    {
+      "id": 6035914265,
+      "newBestPrice": 1067,
+      "usedBestPrice": 1000,
+      "headline": "Samsung Galaxy S21 Ultra 5G 256 Go Double SIM Argent",
+      "reviewsAverageNote": 4.813725490196078,
+      "nbReviews": 102,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1676705738.jpg"
+      ],
+      "buybox": {
+        "salePrice": 1069,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 1309,
+        "salePercentDiscount": 18
+      }
+    },
+    {
+      "id": 2897107991,
+      "newBestPrice": 235.23,
+      "usedBestPrice": 173.8,
+      "headline": "Samsung Galaxy S9 64 Go Simple SIM Noir minuit",
+      "reviewsAverageNote": 4.60431654676259,
+      "nbReviews": 139,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1714307668.jpg"
+      ],
+      "buybox": {
+        "salePrice": 194.88,
+        "advertType": "USED",
+        "advertQuality": "LIKE_NEW",
+        "saleCrossedPrice": 859,
+        "salePercentDiscount": 77,
+        "isRefurbished": true
+      }
+    },
+    {
+      "id": 5482652469,
+      "newBestPrice": 192,
+      "usedBestPrice": 229,
+      "headline": "Tablette Samsung Galaxy Tab A7 32 Go 10.4 pouces Noire",
+      "reviewsAverageNote": 4.822429906542056,
+      "nbReviews": 107,
+      "categoryRef": 194811,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1809413147.jpg"
+      ],
+      "buybox": {
+        "salePrice": 192,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 249,
+        "salePercentDiscount": 22
+      }
+    },
+    {
+      "id": 6035914273,
+      "newBestPrice": 1066,
+      "usedBestPrice": 1042.9,
+      "headline": "Samsung Galaxy S21 Ultra 5G 256 Go Double SIM Noir fantôme",
+      "reviewsAverageNote": 4.610526315789474,
+      "nbReviews": 95,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1676705743.jpg"
+      ],
+      "buybox": {
+        "salePrice": 1066,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 1309,
+        "salePercentDiscount": 18
+      }
+    },
+    {
+      "id": 3930485912,
+      "newBestPrice": 145.71,
+      "usedBestPrice": 119.8,
+      "headline": "Samsung Galaxy A20e 32 Go Double SIM Noir",
+      "reviewsAverageNote": 4.705882352941177,
+      "nbReviews": 34,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1285936994.jpg"
+      ],
+      "buybox": {
+        "salePrice": 119.8,
+        "advertType": "USED",
+        "advertQuality": "LIKE_NEW",
+        "saleCrossedPrice": 189,
+        "salePercentDiscount": 36,
+        "isRefurbished": true
+      }
+    },
+    {
+      "id": 5436603555,
+      "newBestPrice": 192,
+      "usedBestPrice": 205,
+      "headline": "Tablette Samsung Galaxy Tab A7 32 Go 10.4 pouces Argent",
+      "reviewsAverageNote": 4.886792452830188,
+      "nbReviews": 53,
+      "categoryRef": 194811,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1512330077.jpg"
+      ],
+      "buybox": {
+        "salePrice": 192,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 249,
+        "salePercentDiscount": 22
+      }
+    },
+    {
+      "id": 4574147959,
+      "newBestPrice": 299.99,
+      "usedBestPrice": 230,
+      "headline": "Samsung Galaxy A51 6 Go / 128 Go Double SIM Noir",
+      "reviewsAverageNote": 4.650602409638554,
+      "nbReviews": 83,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1383897166.jpg"
+      ],
+      "buybox": {
+        "salePrice": 230,
+        "advertType": "USED",
+        "advertQuality": "LIKE_NEW",
+        "saleCrossedPrice": 379,
+        "salePercentDiscount": 39
+      }
+    },
+    {
+      "id": 5504650608,
+      "newBestPrice": 477.15,
+      "usedBestPrice": 500,
+      "headline": "Samsung Galaxy S20 FE 5G 128 Go Double SIM Violet",
+      "reviewsAverageNote": 4.815789473684211,
+      "nbReviews": 76,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1511640335.jpg"
+      ],
+      "buybox": {
+        "salePrice": 477.15,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 759,
+        "salePercentDiscount": 37
+      }
+    },
+    {
+      "id": 1937823482,
+      "newBestPrice": 193.9,
+      "usedBestPrice": 150,
+      "headline": "Samsung Galaxy S8 64 Go Noir minuit",
+      "reviewsAverageNote": 4.569491525423729,
+      "nbReviews": 295,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1560431664.jpg"
+      ],
+      "buybox": {
+        "salePrice": 165,
+        "advertType": "USED",
+        "advertQuality": "LIKE_NEW",
+        "saleCrossedPrice": 316.99,
+        "salePercentDiscount": 47,
+        "isRefurbished": true
+      }
+    },
+    {
+      "id": 5410378317,
+      "newBestPrice": 1628.65,
+      "usedBestPrice": 1155.9,
+      "headline": "Samsung Galaxy Z Fold2 5G 256 Go Double SIM Noir mystique",
+      "reviewsAverageNote": 4.826923076923077,
+      "nbReviews": 52,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1495769737.jpg"
+      ],
+      "buybox": {
+        "salePrice": 1200,
+        "advertType": "USED",
+        "advertQuality": "VERY_GOOD"
+      }
+    },
+    {
+      "id": 5961367816,
+      "newBestPrice": 169,
+      "usedBestPrice": 175,
+      "headline": "Samsung Galaxy A12 64 Go Double SIM Noir",
+      "reviewsAverageNote": 4,
+      "nbReviews": 16,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1632170067.jpg"
+      ],
+      "buybox": {
+        "salePrice": 169,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 189,
+        "salePercentDiscount": 10
+      }
+    },
+    {
+      "id": 2795113168,
+      "newBestPrice": 259.99,
+      "usedBestPrice": 208.8,
+      "headline": "Samsung Galaxy S9+ 64 Go Double SIM Carbone noir",
+      "reviewsAverageNote": 4.747252747252747,
+      "nbReviews": 91,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1560318342.jpg"
+      ],
+      "buybox": {
+        "salePrice": 209.97,
+        "advertType": "USED",
+        "advertQuality": "LIKE_NEW",
+        "isRefurbished": true
+      }
+    },
+    {
+      "id": 5425365158,
+      "newBestPrice": 286.4,
+      "usedBestPrice": 100,
+      "headline": "Samsung Galaxy A41 64 Go Double SIM Noir",
+      "reviewsAverageNote": 4.708333333333333,
+      "nbReviews": 24,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1533036556.jpg"
+      ],
+      "buybox": {
+        "salePrice": 189.99,
+        "advertType": "USED",
+        "advertQuality": "LIKE_NEW",
+        "saleCrossedPrice": 299,
+        "salePercentDiscount": 36,
+        "isRefurbished": true
+      }
+    },
+    {
+      "id": 3764108850,
+      "newBestPrice": 394.89,
+      "usedBestPrice": 299.9,
+      "headline": "Samsung Galaxy S10+ 128 Go Double SIM Noir prisme",
+      "reviewsAverageNote": 4.704081632653061,
+      "nbReviews": 98,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1673299884.jpg"
+      ],
+      "buybox": {
+        "salePrice": 394.89,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 859,
+        "salePercentDiscount": 54
+      }
+    },
+    {
+      "id": 4908960518,
+      "newBestPrice": 288.49,
+      "usedBestPrice": 250,
+      "headline": "Tablette Samsung Galaxy Tab S6 Lite 64 Go 10.4 pouces Gris oxford",
+      "reviewsAverageNote": 4.775,
+      "nbReviews": 40,
+      "categoryRef": 194811,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1410503935.jpg"
+      ],
+      "buybox": {
+        "salePrice": 288.49,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 469,
+        "salePercentDiscount": 38
+      }
+    },
+    {
+      "id": 6035617271,
+      "newBestPrice": 811,
+      "usedBestPrice": 800,
+      "headline": "Samsung Galaxy S21 5G 256 Go Double SIM Gris phantôme",
+      "reviewsAverageNote": 4.705882352941177,
+      "nbReviews": 68,
+      "categoryRef": 194695,
+      "imagesUrls": [
+        "https://fr.shopping.rakuten.com/photo/1597101148.jpg"
+      ],
+      "buybox": {
+        "salePrice": 811,
+        "advertType": "NEW",
+        "advertQuality": "NEW",
+        "saleCrossedPrice": 909,
+        "salePercentDiscount": 10
+      }
+    }
+  ]
+}
