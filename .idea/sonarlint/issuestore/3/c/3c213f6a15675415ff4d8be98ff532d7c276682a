@@ -1,11 +1,0 @@
-
-Xkotlin:S1172?"9Remove this unused function parameter "productViewModel".(Ú²ş8¿Ù´«§1
->kotlin:S1128"Remove this unused import.(ÊÒÅ­ùÿÿÿÿ8Õß³«§1
->kotlin:S1128"Remove this unused import.(¤­‹üÿÿÿÿ8Õß³«§1
-9kotlin:S1128"Remove this unused import.(ûõ´¡8Õß³«§1
-9kotlin:S1128"Remove this unused import.(Ë®Û÷8Õß³«§1
->kotlin:S1128"Remove this unused import.(•Éì‰üÿÿÿÿ8Õß³«§1
->kotlin:S1128"Remove this unused import.(µ¢«Ïúÿÿÿÿ8íù³«§1
->kotlin:S1128)"Remove this unused import.(ÉÁ¸şÿÿÿÿ8îù³«§1
-ukotlin:S1192P"VDefine a constant instead of duplicating this literal "Localized description" 4 times.(°·½¶8ïù³«§1
-qkotlin:S3776<"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.(½Ì“ÿ8ñù³«§1
