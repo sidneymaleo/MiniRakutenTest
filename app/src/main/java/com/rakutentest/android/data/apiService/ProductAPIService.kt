@@ -15,7 +15,7 @@ interface ProductAPIService {
 
     @GET("/products/details")
     suspend fun getProducDetails(
-        @Query("id") id: Int
+        @Query("id") id: Long
     ): Response<ProductDetails>
 
 }

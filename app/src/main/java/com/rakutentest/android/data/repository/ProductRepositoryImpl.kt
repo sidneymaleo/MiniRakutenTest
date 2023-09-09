@@ -48,7 +48,7 @@ class ProductRepositoryImpl(
 
 
 
-    override suspend fun getProductDetails(id: Int): Resource<ProductDetails> {
+    override suspend fun getProductDetails(id: Long): Resource<ProductDetails> {
        return responseToResourceProductDetails(
            productRemoteDataSource.getProductDetails(
                id = id

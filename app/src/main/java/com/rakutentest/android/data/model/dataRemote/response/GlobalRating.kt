@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class GlobalRating(
     @SerializedName("score")
-    val score: Float,
+    val score: Double,
     @SerializedName("nbReviews")
     val nbReviews: Int
 )

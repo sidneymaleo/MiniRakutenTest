@@ -12,4 +12,5 @@ data class ProductDetailsScreenState (
     var isNetworkError: Boolean = false,
     var productDetails: ProductDetails? = null,
     var isLoad: Boolean = false,
+    var isRequested: Boolean = true
 )

@@ -1,4 +1,4 @@
-package com.rakutentest.android.data.model.dataRemote.response
+package com.rakutentest.android.data.model.dataRemote.response.enums
 
 enum class ProductEnum(s: String) {
     NEW ("NEW"),

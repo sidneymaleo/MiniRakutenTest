@@ -11,6 +11,6 @@ interface ProductRemoteDataSource {
     ): Response<ProductList>
 
     suspend fun getProductDetails(
-        id: Int
+        id: Long
     ): Response<ProductDetails>
 }

@@ -5,7 +5,7 @@ import android.content.Context
 sealed class ProductEvent {
     data class GetRemoteProducts(val app: Context, val keyWord: String): ProductEvent()
 
-    data class GetRemoteProductDetails(val app: Context, val id: Int): ProductEvent()
+    data class GetRemoteProductDetails(val app: Context, val id: Long): ProductEvent()
 
     object GetLocalProducts: ProductEvent()
 

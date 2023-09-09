@@ -13,7 +13,7 @@ interface ProductRepository {
     ): Resource<ProductList>
 
     suspend fun getProductDetails(
-        id: Int
+        id: Long
     ): Resource<ProductDetails>
 
     fun getLocalProducts(): Flow<List<ProductRoom>>
