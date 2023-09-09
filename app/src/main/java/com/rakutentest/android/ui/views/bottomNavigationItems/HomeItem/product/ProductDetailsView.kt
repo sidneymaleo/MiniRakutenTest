@@ -1,5 +1,6 @@
 package com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem.product
 
+import android.text.util.Linkify
 import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -56,6 +57,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -63,10 +65,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
+import com.google.android.material.textview.MaterialTextView
 import com.rakutentest.android.R
 import com.rakutentest.android.data.model.dataRemote.response.enums.ProductImageSizeEnum
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
@@ -88,8 +92,6 @@ fun ProductDetailsView(
     var state by remember { mutableIntStateOf(0) }
     //It's a title of our tabs
     val titles = listOf("Description", "Commentaire du vendeur", "Avis")
-
-    var tabTextValue = rememberSaveable { mutableStateOf("") }
 
     Scaffold(
         topBar = {
@@ -193,7 +195,7 @@ fun ProductDetailsView(
                                                         ),
                                                         contentDescription = null,
                                                         contentScale = ContentScale.Crop,
-                                                        modifier = Modifier.height(200.dp)
+                                                        modifier = Modifier.height(200.dp).padding(bottom = 30.dp)
                                                     )
 
                                                 }
@@ -325,34 +327,42 @@ fun ProductDetailsView(
                                     // Here we display our text after we click the text
                                     when (state) {
                                         0 -> {
-                                            tabTextValue.value =
-                                                screenState.productDetails!!.description
-                                        }
-
-                                        1 -> {
-                                            tabTextValue.value =
-                                                screenState.productDetails!!.sellerComment
-                                        }
-                                    }
-
-                                    //we display it if we click in our two first tabs
-                                    if (listOf(0, 1).contains(state)) {
-                                        // fromHtml help us to translate our html code
-                                        val spannedText = HtmlCompat.fromHtml(tabTextValue.value, 0)
-                                        Row {
-                                            Text(
-                                                text = spannedText.toString(),
-                                                style = MaterialTheme.typography.bodyLarge,
+                                            // fromHtml help us to translate our html code
+                                            val spannedText = HtmlCompat.fromHtml(screenState.productDetails!!.description, 0)
+                                            AndroidView(
                                                 modifier = Modifier.padding(
                                                     top = 10.dp,
                                                     start = 5.dp,
                                                     end = 5.dp
+                                                ),
+                                                factory = {
+                                                    MaterialTextView(it).apply {
+                                                        //links
+                                                        autoLinkMask = Linkify.WEB_URLS
+                                                        linksClickable = true
+                                                        // setting the color to use forr highlihting the links
+                                                        setLinkTextColor(Color.Blue.toArgb())
+                                                    }
+                                                },
+                                                update = {
+                                                    it.text = spannedText
+                                                }
+                                            )
+                                        }
+
+                                        1 -> {
+                                            Text(
+                                                text = screenState.productDetails!!.sellerComment,
+                                                style = MaterialTheme.typography.bodyLarge,
+                                                modifier = Modifier.padding(
+                                                    top = 10.dp,
+                                                    start = 5.dp,
+                                                    end = 5.dp,
+                                                    bottom = 10.dp
                                                 )
                                             )
                                         }
                                     }
-
-
                                 }
 
                             }
