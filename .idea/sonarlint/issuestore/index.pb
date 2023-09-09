@@ -149,3 +149,17 @@ Zapp/src/main/java/com/rakutentest/android/ui/UIEvent/ScreenState/ProductListScr
 \app/src/main/java/com/rakutentest/android/presentation/viewModel/Product/ProductViewModel.kt,2/9/299184425eb99c282d14e10d755a40d04c0eec31
 ü
 oapp/src/main/java/com/rakutentest/android/ui/views/bottomNavigationItems/HomeItem/product/ProductDetailsView.kt,a/6/a689d39483bc2c6125a2805140bd507cb5587130
+å
+\app/src/test/java/com/rakutentest/android/domain/useCase/buybox/GetLocalBuyBoxUseCaseTest.kt,9/a/9ac84ccd587988712c1d50291f4d7c10377f3011
+ê
+`app/src/test/java/com/rakutentest/android/domain/useCase/product/GetRemoteProductsUseCaseTest.kt,a/6/a6649471d20a9977f36b374f391d0c311fe262c8
+ñ
+fapp/src/test/java/com/rakutentest/android/domain/useCase/product/GetRemoteProductDetailsUseCaseTest.kt,9/e/9e995bcbe0c44d65b7903e661e7f7068226a30bf
+è
+_app/src/test/java/com/rakutentest/android/domain/useCase/product/GetLocalProductsUseCaseTest.kt,7/7/77bc29356a933c90abbbbd0f66b5d85c27d99c5d
+í
+bapp/src/test/java/com/rakutentest/android/domain/useCase/product/DeleteLocalProductsUseCaseTest.kt,3/a/3a288cc8e0e526fc74f0a88800352eb06a3b8f47
+Ñ
+Tapp/src/test/java/com/rakutentest/android/domain/repository/FakeProductRepository.kt,e/4/e4f0c4338be89af143b1b16ebcecbf55ad539fa2
+É
+Sapp/src/test/java/com/rakutentest/android/domain/repository/FakeBuyBoxRepository.kt,4/5/4557547de62223a17a7655c6b6823cf7b4eb9866
