@@ -108,13 +108,9 @@ fun HomeItem(
                 items(screenState.productList) {product ->
                     ProductItem(
                         navController = navController,
-                        product = product,
-                        productViewModel = productViewModel
+                        product = product
                     )
                 }
-
-
-
             }
         }
     }

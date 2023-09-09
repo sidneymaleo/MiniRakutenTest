@@ -46,10 +46,8 @@ import com.rakutentest.android.ui.views.model.Route
 @Composable
 fun ProductItem(
     navController: NavHostController,
-    product: Product,
-    productViewModel: ProductViewModel
+    product: Product
 ) {
-
 
     Box(Modifier.fillMaxSize().clickable {
         navController.navigate(Route.productDetailsView)

@@ -9,6 +9,7 @@ import androidx.compose.foundation.interaction.collectIsDraggedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,7 +20,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
@@ -130,192 +134,229 @@ fun ProductDetailsView(
 
                 }) { innerPadding ->
 
-                //we test if product details is not null after
-                // to display our ui
-                if (screenState.productDetails !== null) {
+                //we display our spinner if we request our network
+                if (screenState.isLoad) {
+                    /**
+                     * the colum layout is
+                     * help to center our progress bar
+                     */
                     Column(
                         modifier = Modifier.padding(innerPadding)
                     ) {
-
-                        //we display our spinner if we request our network
-                        if (screenState.isLoad) {
-                            SpinnerCenterVerticalHorizontal()
-                        }
-
-                        //we test if our productDetails is not null
+                        SpinnerCenterVerticalHorizontal()
+                    }
+                }
+                /**
+                 * We use the lazy column
+                 * to add the scroll in our
+                 * product details view
+                 */
+                LazyColumn(
+                    state = rememberLazyListState(),
+                    contentPadding = PaddingValues(top = 20.dp)
+                ) {
+                    items(count = 1) {
+                        //we test if product details is not null after
+                        // to display our ui
                         if (screenState.productDetails !== null) {
-                            //we we test the product details images size
-                            if (screenState.productDetails?.images!!.isNotEmpty()) {
-                                //here we call our corousel
-                                CarouselProductImage(
-                                    itemsCount = screenState.productDetails?.images!!.size,
-                                    itemContent = { index ->
+                            Column(
+                                modifier = Modifier.padding(innerPadding)
+                            ) {
 
-                                        Column(
-                                            modifier = Modifier.fillMaxWidth(),
-                                            verticalArrangement = Arrangement.Center,
-                                            horizontalAlignment = Alignment.CenterHorizontally
-                                        ) {
+                                //we test if our productDetails is not null
+                                if (screenState.productDetails !== null) {
+                                    //we we test the product details images size
+                                    if (screenState.productDetails?.images!!.isNotEmpty()) {
+                                        //here we call our corousel
+                                        CarouselProductImage(
+                                            itemsCount = screenState.productDetails?.images!!.size,
+                                            itemContent = { index ->
 
-                                            Image(
-                                                //here we call getProductImage
-                                                painter = getProductImage(
-                                                    image = screenState.productDetails?.images!![index].imagesUrls.entry.filter {
-                                                        /**
-                                                         * here I'm just testing the original
-                                                         * because I don't have enough time to
-                                                         * manage all the screen sizes to use this image
-                                                         * rendering api optimizer for display depending on the screen
-                                                         */
-                                                        it.size == ProductImageSizeEnum.ORIGINAL.name
-                                                    }[0].url
-                                                ),
-                                                contentDescription = null,
-                                                contentScale = ContentScale.Crop,
-                                                modifier = Modifier.height(200.dp)
+                                                Column(
+                                                    modifier = Modifier.fillMaxWidth(),
+                                                    verticalArrangement = Arrangement.Center,
+                                                    horizontalAlignment = Alignment.CenterHorizontally
+                                                ) {
+
+                                                    Image(
+                                                        //here we call getProductImage
+                                                        painter = getProductImage(
+                                                            image = screenState.productDetails?.images!![index].imagesUrls.entry.filter {
+                                                                /**
+                                                                 * here I'm just testing the original
+                                                                 * because I don't have enough time to
+                                                                 * manage all the screen sizes to use this image
+                                                                 * rendering api optimizer for display depending on the screen
+                                                                 */
+                                                                it.size == ProductImageSizeEnum.ORIGINAL.name
+                                                            }[0].url
+                                                        ),
+                                                        contentDescription = null,
+                                                        contentScale = ContentScale.Crop,
+                                                        modifier = Modifier.height(200.dp)
+                                                    )
+
+                                                }
+                                            }
+                                        )
+
+                                    }
+                                }
+
+                                //we add our add the divider
+                                Row {
+                                    Divider(
+                                        color = Color.Gray,
+                                        modifier = Modifier
+                                            .padding(top = 15.dp, bottom = 15.dp)
+                                            .fillMaxWidth()
+                                            .height(0.20.dp),
+                                    )
+                                }
+
+                                // here build our headline block
+                                Column(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalAlignment = Alignment.CenterHorizontally
+                                ) {
+                                    Text(
+                                        text = "${screenState.productDetails!!.headline}",
+                                        modifier = Modifier.padding(
+                                            top = 2.dp,
+                                            start = 20.dp,
+                                            end = 20.dp
+                                        ),
+                                        fontSize = 15.sp
+                                    )
+                                }
+
+
+                                Row(
+                                    modifier = Modifier
+                                        .padding(start = 20.dp)
+                                        .fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
+                                    Column {
+                                        //We display our ProductStar
+                                        ProductStarHandle(
+                                            score = screenState.productDetails!!.globalRating.score,
+                                            nbReviews = screenState.productDetails!!.globalRating.nbReviews
+                                        )
+
+                                        //Here we display our product Price
+                                        ProductPrice(
+                                            advertType = screenState.productDetails!!.quality,
+                                            newBestPrice = screenState.productDetails!!.newBestPrice,
+                                            usedBestPrice = screenState.productDetails!!.usedBestPrice
+                                        )
+                                    }
+
+                                    Spacer(modifier = Modifier.size(20.dp))
+                                    Row(
+                                        modifier = Modifier.padding(5.dp),
+                                        horizontalArrangement = Arrangement.Center
+                                    ) {
+                                        OutlinedButton(
+                                            onClick = { },
+                                            shape = CircleShape,
+                                            border = BorderStroke(
+                                                1.dp,
+                                                Color.Gray.copy(alpha = 0.5f)
                                             )
+                                        ) {
+                                            Icon(
+                                                Icons.Outlined.FavoriteBorder,
+                                                contentDescription = null,
+                                                modifier = Modifier
+                                            )
+                                        }
 
+                                        Spacer(modifier = Modifier.size(5.dp))
+
+                                        OutlinedButton(
+                                            onClick = { },
+                                            shape = CircleShape,
+                                            border = BorderStroke(
+                                                1.dp,
+                                                Color.Gray.copy(alpha = 0.5f)
+                                            )
+                                        ) {
+                                            Icon(
+                                                Icons.Outlined.NotificationsNone,
+                                                contentDescription = null,
+                                                modifier = Modifier
+                                            )
                                         }
                                     }
-                                )
+                                }
 
-                            }
-                        }
-
-                        //we add our add the divider
-                        Row {
-                            Divider(
-                                color = Color.Gray,
-                                modifier = Modifier
-                                    .padding(top = 15.dp, bottom = 15.dp)
-                                    .fillMaxWidth()
-                                    .height(0.20.dp),
-                            )
-                        }
-
-                        // here build our headline block
-                        Column(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Text(
-                                text = "${screenState.productDetails!!.headline}",
-                                modifier = Modifier.padding(top = 2.dp, start = 20.dp, end = 20.dp),
-                                fontSize = 15.sp
-                            )
-                        }
-
-
-                        Row(
-                            modifier = Modifier
-                                .padding(start = 20.dp)
-                                .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Column {
-                                //We display our ProductStar
-                                ProductStarHandle(
-                                    score = screenState.productDetails!!.globalRating.score,
-                                    nbReviews = screenState.productDetails!!.globalRating.nbReviews
-                                )
-
-                                //Here we display our product Price
-                                ProductPrice(
-                                    advertType = screenState.productDetails!!.quality,
-                                    newBestPrice = screenState.productDetails!!.newBestPrice,
-                                    usedBestPrice = screenState.productDetails!!.usedBestPrice
-                                )
-                            }
-
-                            Spacer(modifier = Modifier.size(20.dp))
-                            Row(
-                                modifier = Modifier.padding(5.dp),
-                                horizontalArrangement = Arrangement.Center
-                            ) {
-                                OutlinedButton(
-                                    onClick = { },
-                                    shape = CircleShape,
-                                    border = BorderStroke(1.dp, Color.Gray.copy(alpha = 0.5f))
-                                ) {
-                                    Icon(
-                                        Icons.Outlined.FavoriteBorder,
-                                        contentDescription = null,
+                                Row {
+                                    Divider(
+                                        color = Color.Gray,
                                         modifier = Modifier
+                                            .padding(top = 15.dp, bottom = 0.dp)
+                                            .fillMaxWidth()
+                                            .height(0.20.dp),
                                     )
                                 }
 
-                                Spacer(modifier = Modifier.size(5.dp))
-
-                                OutlinedButton(
-                                    onClick = { },
-                                    shape = CircleShape,
-                                    border = BorderStroke(1.dp, Color.Gray.copy(alpha = 0.5f))
-                                ) {
-                                    Icon(
-                                        Icons.Outlined.NotificationsNone,
-                                        contentDescription = null,
-                                        modifier = Modifier
-                                    )
-                                }
-                            }
-                        }
-
-                        Row {
-                            Divider(
-                                color = Color.Gray,
-                                modifier = Modifier
-                                    .padding(top = 15.dp, bottom = 0.dp)
-                                    .fillMaxWidth()
-                                    .height(0.20.dp),
-                            )
-                        }
-
-                        Column {
-                            TabRow(
-                                selectedTabIndex = state,
-                                contentColor = Color.Black,
-                                backgroundColor = MaterialTheme.colorScheme.background
-                            ) {
-                                titles.forEachIndexed { index, title ->
-                                    Tab(
-                                        selected = state == index,
-                                        onClick = { state = index },
-                                        text = {
-                                            Text(
-                                                text = title,
-                                                maxLines = 1,
-                                                fontSize = 12.sp
+                                Column {
+                                    TabRow(
+                                        selectedTabIndex = state,
+                                        contentColor = Color.Black,
+                                        backgroundColor = MaterialTheme.colorScheme.background
+                                    ) {
+                                        titles.forEachIndexed { index, title ->
+                                            Tab(
+                                                selected = state == index,
+                                                onClick = { state = index },
+                                                text = {
+                                                    Text(
+                                                        text = title,
+                                                        maxLines = 1,
+                                                        fontSize = 12.sp
+                                                    )
+                                                }
                                             )
                                         }
-                                    )
+                                    }
+
+                                    // Here we display our text after we click the text
+                                    when (state) {
+                                        0 -> {
+                                            tabTextValue.value =
+                                                screenState.productDetails!!.description
+                                        }
+
+                                        1 -> {
+                                            tabTextValue.value =
+                                                screenState.productDetails!!.sellerComment
+                                        }
+                                    }
+
+                                    //we display it if we click in our two first tabs
+                                    if (listOf(0, 1).contains(state)) {
+                                        // fromHtml help us to translate our html code
+                                        val spannedText = HtmlCompat.fromHtml(tabTextValue.value, 0)
+                                        Row {
+                                            Text(
+                                                text = spannedText.toString(),
+                                                style = MaterialTheme.typography.bodyLarge,
+                                                modifier = Modifier.padding(
+                                                    top = 10.dp,
+                                                    start = 5.dp,
+                                                    end = 5.dp
+                                                )
+                                            )
+                                        }
+                                    }
+
+
                                 }
+
                             }
-
-                            // Here we display our text after we click the text
-                            when (state) {
-                                0 -> {
-                                    tabTextValue.value = screenState.productDetails!!.description
-                                }
-                                1 -> {
-                                    tabTextValue.value = screenState.productDetails!!.sellerComment
-                                }
-                            }
-
-                            if (listOf(0,1).contains(state)) {
-                                // fromHtml help us to translate our html code
-                                val spannedText = HtmlCompat.fromHtml(tabTextValue.value, 0)
-                                Row {
-                                    Text(
-                                        text =  spannedText.toString(),
-                                        style = MaterialTheme.typography.bodyLarge,
-                                        modifier = Modifier.padding(top = 10.dp, start = 5.dp, end = 5.dp)
-                                    )
-                                }
-                            }
-
-
                         }
-
                     }
                 }
             }
