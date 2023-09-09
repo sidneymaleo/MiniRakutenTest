@@ -64,6 +64,17 @@ class ProductDAOTest {
     }
 
 
+    /**
+     * This method insert our product list
+     * and should be used in our tests
+     */
+    fun insertProductList() = runTest {
+        products.forEach {productRoom ->
+            dao.insert(product = productRoom)
+        }
+    }
+
+
 
     //here we close our database
     @After
@@ -74,27 +85,23 @@ class ProductDAOTest {
     @Test
     fun get_all_database_products_Test() = runTest {
         //before we insert our product data
-        products.forEach {productRoom ->
-            dao.insert(product = productRoom)
-        }
+        insertProductList()
 
         //now we  our get all products method to test it
         dao.getAllProduct().test {
             //we get our flow item
             val products = awaitItem()
             Truth.assertThat(products.size).isEqualTo(2)
-            //we test our first item headline
-            Truth.assertThat(products[0].headline).isEqualTo("Samsung Galaxy S21 5G 128 Go Double SIM Violet")
+            //we test our second product list headline item
+            Truth.assertThat(products[1].headline).isEqualTo("Samsung Galaxy S21 5G 128 Go Double SIM Violet")
             cancel()
         }
     }
     
     @Test
-    fun delete_all_products_Test() = runTest { 
-        //we insert our product before to delete it
-        products.forEach {productRoom ->
-            dao.insert(product = productRoom)
-        }
+    fun delete_all_products_Test() = runTest {
+        //we insert our products before to delete it
+        insertProductList()
 
         //we test we have really two item
         dao.getAllProduct().test {
@@ -110,6 +117,50 @@ class ProductDAOTest {
             //we get our flow item
             val products = awaitItem()
             Truth.assertThat(products.size).isEqualTo(0)
+            cancel()
+        }
+    }
+
+    @Test
+    fun update_product_Test() = runTest {
+        //we insert our products before to update it
+        insertProductList()
+
+
+        /**
+         *  now we  our get all products method to test it
+         *  we test our second product list headline item before the update
+         */
+        dao.getAllProduct().test {
+            //we get our flow item
+            val products = awaitItem()
+            //we test our second product list headline item
+            Truth.assertThat(products[1].headline).isEqualTo("Samsung Galaxy S21 5G 128 Go Double SIM Violet")
+            cancel()
+        }
+
+
+        // now we update our second products headline
+        //products[1].headline = "Samsung Galaxy S21 5G 128 Go Double SIM Violet Sidney of rakuten set this headline"
+        dao.updateProduct(ProductRoom(
+            id = 6035914280,
+            newBestPrice = 689.99f,
+            usedBestPrice = 640f,
+            headline = "Samsung Galaxy S21 5G 128 Go Double SIM Violet Sidney of rakuten set this headline",
+            reviewsAverageNote = 4.627659574468085,
+            nbReviews = 94,
+            categoryRef = 194695,
+            imagesUrls = listOf(
+                "https://fr.shopping.rakuten.com/photo/1673299896.jpg"
+            )
+        ))
+
+        dao.getAllProduct().test {
+            //we get our flow item
+            val products = awaitItem()
+            //we test our second product list headline item
+            // to verify if our update was be a success
+            Truth.assertThat(products[1].headline).isEqualTo("Samsung Galaxy S21 5G 128 Go Double SIM Violet Sidney of rakuten set this headline")
             cancel()
         }
     }
