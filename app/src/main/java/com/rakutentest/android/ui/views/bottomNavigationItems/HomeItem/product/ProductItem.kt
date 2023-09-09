@@ -42,15 +42,6 @@ import com.rakutentest.android.data.model.dataRemote.response.enums.ProductEnum
 import com.rakutentest.android.ui.views.model.Route
 
 
-/**
- * This function help us to display our image
- */
-@Composable
-fun getProductImage(image: String): Painter {
-    return rememberAsyncImagePainter(image)
-}
-
-
 //In this UI we build our Row Card
 @Composable
 fun ProductItem(
@@ -123,38 +114,16 @@ fun ProductItem(
 
                         )
                         //Here we display our star
-                        ProductStarHandle(score = product.reviewsAverageNote, nbReviews = product.nbReviews)
-                        // here we test our advert Type
-                        // for display the good informations
-                        if ((product.buybox.advertType).equals(ProductEnum.NEW.name) ) {
-                            Row {
-                                Text(
-                                    text = "${product.newBestPrice} €",
-                                    color = Color.Red,
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
+                        ProductStarHandle(
+                            score = product.reviewsAverageNote,
+                            nbReviews = product.nbReviews
+                        )
 
-                                Text(
-                                    text = stringResource(R.string.new_value),
-                                    color = Color.Red,
-                                    fontSize = 15.sp,
-                                )
-                            }
-                        } else if ((product.buybox.advertType).equals(ProductEnum.USED.name)) {
-                            Row {
-                                Text(
-                                    text = stringResource(R.string.occasion),
-                                    fontSize = 15.sp,
-                                )
-
-                                Text(
-                                    text = "${product.usedBestPrice} €",
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 20.sp
-                                )
-                            }
-                        }
+                        ProductPrice(
+                            advertType = product.buybox.advertType,
+                            newBestPrice = product.newBestPrice,
+                            usedBestPrice = product.usedBestPrice
+                        )
                     }
                 }
 

@@ -1,6 +1,7 @@
 package com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem.product
 
 import android.util.Log
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -29,11 +30,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.NotificationsNone
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -127,7 +131,7 @@ fun ProductDetailsView(
                         //we test if our productDetails is not null
                         if (screenState.productDetails !== null) {
                             //we we test the product details images size
-                            if(screenState.productDetails?.images!!.isNotEmpty()) {
+                            if (screenState.productDetails?.images!!.isNotEmpty()) {
                                 //here we call our corousel
                                 CarouselProductImage(
                                     itemsCount = screenState.productDetails?.images!!.size,
@@ -137,7 +141,7 @@ fun ProductDetailsView(
                                             modifier = Modifier.fillMaxWidth(),
                                             verticalArrangement = Arrangement.Center,
                                             horizontalAlignment = Alignment.CenterHorizontally
-                                        ){
+                                        ) {
 
                                             Image(
                                                 //here we call getProductImage
@@ -187,12 +191,68 @@ fun ProductDetailsView(
                             )
                         }
 
+
                         Row(
-                            modifier = Modifier.padding(start = 20.dp)
+                            modifier = Modifier
+                                .padding(start = 20.dp)
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Center
                         ) {
-                            ProductStarHandle(
-                                score = screenState.productDetails!!.globalRating.score,
-                                nbReviews = screenState.productDetails!!.globalRating.nbReviews
+                            Column {
+                                //We display our ProductStar
+                                ProductStarHandle(
+                                    score = screenState.productDetails!!.globalRating.score,
+                                    nbReviews = screenState.productDetails!!.globalRating.nbReviews
+                                )
+
+                                //Here we display our product Price
+                                ProductPrice(
+                                    advertType = screenState.productDetails!!.quality,
+                                    newBestPrice = screenState.productDetails!!.newBestPrice,
+                                    usedBestPrice = screenState.productDetails!!.usedBestPrice
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.size(20.dp))
+                            Row(
+                                modifier = Modifier.padding(5.dp),
+                                horizontalArrangement = Arrangement.Center
+                            ) {
+                                OutlinedButton(
+                                    onClick = { },
+                                    shape = CircleShape,
+                                    border = BorderStroke(1.dp, Color.Gray.copy(alpha = 0.5f))
+                                ) {
+                                    Icon(
+                                        Icons.Outlined.FavoriteBorder,
+                                        contentDescription = null,
+                                        modifier = Modifier
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.size(5.dp))
+
+                                OutlinedButton(
+                                    onClick = { },
+                                    shape = CircleShape,
+                                    border = BorderStroke(1.dp, Color.Gray.copy(alpha = 0.5f))
+                                ) {
+                                    Icon(
+                                        Icons.Outlined.NotificationsNone,
+                                        contentDescription = null,
+                                        modifier = Modifier
+                                    )
+                                }
+                            }
+                        }
+
+                        Row {
+                            Divider(
+                                color = Color.Gray,
+                                modifier = Modifier
+                                    .padding(top = 15.dp, bottom = 15.dp)
+                                    .fillMaxWidth()
+                                    .height(0.20.dp),
                             )
                         }
 
@@ -240,7 +300,7 @@ fun DotsIndicator(
     modifier: Modifier = Modifier,
     totalDots: Int,
     selectedIndex: Int,
-    selectedColor: Color =  colorResource(R.color.GrayLight),
+    selectedColor: Color = colorResource(R.color.GrayLight),
     //We decrease the opacity of our gray to make it lighter
     unSelectedColor: Color = Color.Gray.copy(alpha = 0.5f)
 ) {
