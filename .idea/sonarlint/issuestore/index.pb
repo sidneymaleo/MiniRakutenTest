@@ -163,9 +163,5 @@ bapp/src/test/java/com/rakutentest/android/domain/useCase/product/DeleteLocalPro
 Tapp/src/test/java/com/rakutentest/android/domain/repository/FakeProductRepository.kt,e/4/e4f0c4338be89af143b1b16ebcecbf55ad539fa2
 ƒ
 Sapp/src/test/java/com/rakutentest/android/domain/repository/FakeBuyBoxRepository.kt,4/5/4557547de62223a17a7655c6b6823cf7b4eb9866
-y
-Iapp/src/test/java/com/rakutentest/android/domain/ProductAPIServiceTest.kt,f/4/f47718d0c032096be3f3220b62ddfb5b01d1fb05
-u
-Eapp/src/test/java/com/rakutentest/android/data/apiService/TestTest.kt,9/b/9b8601bbba50df3dd592726dc3c86c4fdf9cfd62
-q
-Aapp/src/main/java/com/rakutentest/android/data/apiService/Test.kt,2/6/26411d22bdd133fcfbfcaedbe249f58eb66f8dbe
+‚
+Rapp/src/test/java/com/rakutentest/android/data/apiService/ProductAPIServiceTest.kt,2/3/232c3c819ec9ce2b27dc808d1a01c20787d1ad08
