@@ -25,6 +25,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Divider
 import androidx.compose.material.Surface
+import androidx.compose.material.TabRow
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.material.TopAppBar
@@ -38,10 +39,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -49,9 +55,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.text.HtmlCompat
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
@@ -72,6 +80,12 @@ fun ProductDetailsView(
     val screenState = productViewModel.screenStateProductDetails.value
     //we get our application context
     val context = LocalContext.current
+
+    var state by remember { mutableIntStateOf(0) }
+    //It's a title of our tabs
+    val titles = listOf("Description", "Commentaire du vendeur", "Avis")
+
+    var tabTextValue = rememberSaveable { mutableStateOf("") }
 
     Scaffold(
         topBar = {
@@ -250,10 +264,56 @@ fun ProductDetailsView(
                             Divider(
                                 color = Color.Gray,
                                 modifier = Modifier
-                                    .padding(top = 15.dp, bottom = 15.dp)
+                                    .padding(top = 15.dp, bottom = 0.dp)
                                     .fillMaxWidth()
                                     .height(0.20.dp),
                             )
+                        }
+
+                        Column {
+                            TabRow(
+                                selectedTabIndex = state,
+                                contentColor = Color.Black,
+                                backgroundColor = MaterialTheme.colorScheme.background
+                            ) {
+                                titles.forEachIndexed { index, title ->
+                                    Tab(
+                                        selected = state == index,
+                                        onClick = { state = index },
+                                        text = {
+                                            Text(
+                                                text = title,
+                                                maxLines = 1,
+                                                fontSize = 12.sp
+                                            )
+                                        }
+                                    )
+                                }
+                            }
+
+                            // Here we display our text after we click the text
+                            when (state) {
+                                0 -> {
+                                    tabTextValue.value = screenState.productDetails!!.description
+                                }
+                                1 -> {
+                                    tabTextValue.value = screenState.productDetails!!.sellerComment
+                                }
+                            }
+
+                            if (listOf(0,1).contains(state)) {
+                                // fromHtml help us to translate our html code
+                                val spannedText = HtmlCompat.fromHtml(tabTextValue.value, 0)
+                                Row {
+                                    Text(
+                                        text =  spannedText.toString(),
+                                        style = MaterialTheme.typography.bodyLarge,
+                                        modifier = Modifier.padding(top = 10.dp, start = 5.dp, end = 5.dp)
+                                    )
+                                }
+                            }
+
+
                         }
 
                     }

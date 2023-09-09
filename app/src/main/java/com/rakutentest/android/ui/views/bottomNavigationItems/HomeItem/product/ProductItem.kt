@@ -53,7 +53,8 @@ fun ProductItem(
 
     Box(Modifier.fillMaxSize().clickable {
         navController.navigate(Route.productDetailsView)
-    }) {
+    }.padding(top = 15.dp)
+    ) {
 
         Box(
             modifier = Modifier.align(Alignment.TopEnd)
@@ -131,7 +132,7 @@ fun ProductItem(
                     Divider(
                         color = Color.Gray,
                         modifier = Modifier
-                            .padding(top = 15.dp, bottom = 15.dp)
+                            .padding(top = 15.dp)
                             .fillMaxWidth()
                             .height(0.20.dp),
                     )
