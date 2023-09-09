@@ -95,22 +95,22 @@ class FakeProductRepository: ProductRepository {
     )
 
     //we build our first fake entries
-    val fakeEntry1 =Entry(
+    val fakeEntry1 = Entry(
         size = "ORIGINAL",
         url = "https://fr.shopping.rakuten.com/photo/1673299896.jpg"
     )
 
-    val fakeEntry2 =Entry(
+    val fakeEntry2 = Entry(
         size = "SMALL",
         url = "https://fr.shopping.rakuten.com/photo/1673299896_S.jpg"
     )
 
-    val fakeEntry3 =Entry(
+    val fakeEntry3 = Entry(
         size = "MEDIUM",
         url = "https://fr.shopping.rakuten.com/photo/1673299896_M.jpg"
     )
 
-    val fakeEntry4 =Entry(
+    val fakeEntry4 = Entry(
         size = "LARGE",
         url = "https://fr.shopping.rakuten.com/photo/1673299896_L.jpg"
     )
