@@ -56,6 +56,21 @@ class ProductAPIServiceTest {
             //we test if our response is Not null
             assertThat(responseBody).isNotNull()
             assertThat(request.path).isEqualTo("/products/search?keyword=Samsung")
+            //we test our product list response length
+            assertThat(responseBody?.products!!.size).isEqualTo(20)
+        }
+    }
+
+    @Test
+    fun `Retrieve a product details`() {
+        runBlocking {
+            //we load our json response
+            enqueueMockResponse("productdetailsresponse.json")
+            //we simulate our api call
+            val responseBody = service.getProducDetails(id = 6035914280).body()
+            val request = server.takeRequest()
+            assertThat(responseBody).isNotNull()
+            assertThat(request.path).isEqualTo("/products/details?id=6035914280")
         }
     }
 }
