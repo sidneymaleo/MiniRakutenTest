@@ -100,7 +100,7 @@ fun ProductDetailsView(
 
     var state by remember { mutableIntStateOf(0) }
     //It's a title of our tabs
-    val titles = listOf("Description", "Commentaire du vendeur", "Avis")
+    val titles = listOf(stringResource(R.string.description), stringResource(R.string.seller_comment), stringResource(R.string.notice))
     var isRequested = rememberSaveable {
         mutableStateOf(true)
     }

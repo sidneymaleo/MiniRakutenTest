@@ -101,7 +101,7 @@ fun HomeItem(
                 },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 placeholder = {
-                    Text(text = "Rechercher sur Rakuten")
+                    Text(text = stringResource(R.string.search_rakuten) )
                 },
                 leadingIcon = {
                     IconButton(onClick = { }) {
