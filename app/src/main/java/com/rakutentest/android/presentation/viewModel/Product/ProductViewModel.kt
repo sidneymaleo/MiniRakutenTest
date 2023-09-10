@@ -14,6 +14,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import androidx.compose.runtime.State
+import com.rakutentest.android.data.model.dataLocal.ProductRoom
+import com.rakutentest.android.domain.useCase.product.SaveProductUseCase
 import com.rakutentest.android.presentation.util.isNetworkAvailable
 import com.rakutentest.android.ui.UIEvent.Event.ProductEvent
 import com.rakutentest.android.ui.UIEvent.UIEvent
@@ -25,7 +27,8 @@ class ProductViewModel @Inject constructor(
     private val getRemoteProductsUseCase: GetRemoteProductsUseCase,
     private val getRemoteProductDetailsUseCase: GetRemoteProductDetailsUseCase,
     private val getLocalProductsUseCase: GetLocalProductsUseCase,
-    private val deleteLocalProductsUseCase: DeleteLocalProductsUseCase
+    private val deleteLocalProductsUseCase: DeleteLocalProductsUseCase,
+    private val saveProductUseCase: SaveProductUseCase
 ) : ViewModel() {
 
     /**
@@ -78,6 +81,23 @@ class ProductViewModel @Inject constructor(
                     isNetworkError = false,
                     isRequested = false
                 )
+                //here we insert our product
+
+                products.products.forEach { product ->
+                    saveProductUseCase.execute(product =
+                        ProductRoom(
+                            id = product.id,
+                            newBestPrice = product.newBestPrice,
+                            usedBestPrice = product.usedBestPrice,
+                            headline = product.headline,
+                            reviewsAverageNote = product.reviewsAverageNote,
+                            nbReviews = product.nbReviews,
+                            categoryRef = product.categoryRef,
+                            imagesUrls = product.imagesUrls
+                        )
+                    )
+                }
+
             }
         } catch (e: Exception) {
             _screenStateProducts.value = _screenStateProducts.value.copy(
@@ -168,7 +188,9 @@ class ProductViewModel @Inject constructor(
             }
 
             is ProductEvent.GetLocalProducts -> {
+                screenStateProducts.value.productList.forEach { product ->
 
+                }
             }
 
             is ProductEvent.DeleteLocalProductsUseCase -> {

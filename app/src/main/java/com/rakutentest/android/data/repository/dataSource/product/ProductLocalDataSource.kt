@@ -8,4 +8,6 @@ interface ProductLocalDataSource {
    fun getLocalProducts(): Flow<List<ProductRoom>>
 
    suspend fun deleteLocalProducts()
+
+   suspend fun insertProduct(product: ProductRoom)
 }

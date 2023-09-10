@@ -5,6 +5,7 @@ import com.rakutentest.android.domain.useCase.product.DeleteLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductDetailsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductsUseCase
+import com.rakutentest.android.domain.useCase.product.SaveProductUseCase
 import com.rakutentest.android.presentation.viewModel.BuyBox.BuyBoxViewModelFactory
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModelFactory
 import dagger.Module
@@ -23,14 +24,16 @@ class FactoryModule {
         getRemoteProductsUseCase: GetRemoteProductsUseCase,
         getRemoteProductDetailsUseCase: GetRemoteProductDetailsUseCase,
         getLocalProductsUseCase: GetLocalProductsUseCase,
-        deleteLocalProductsUseCase: DeleteLocalProductsUseCase
+        deleteLocalProductsUseCase: DeleteLocalProductsUseCase,
+        saveProductUseCase: SaveProductUseCase
     ): ProductViewModelFactory {
 
         return ProductViewModelFactory(
             getRemoteProductsUseCase = getRemoteProductsUseCase,
             getRemoteProductDetailsUseCase = getRemoteProductDetailsUseCase,
             getLocalProductsUseCase = getLocalProductsUseCase,
-            deleteLocalProductsUseCase = deleteLocalProductsUseCase
+            deleteLocalProductsUseCase = deleteLocalProductsUseCase,
+            saveProductUseCase = saveProductUseCase
         )
     }
 

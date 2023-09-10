@@ -6,12 +6,14 @@ import com.rakutentest.android.domain.useCase.product.DeleteLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductDetailsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductsUseCase
+import com.rakutentest.android.domain.useCase.product.SaveProductUseCase
 
 class ProductViewModelFactory(
     private val getRemoteProductsUseCase: GetRemoteProductsUseCase,
     private val getRemoteProductDetailsUseCase: GetRemoteProductDetailsUseCase,
     private val getLocalProductsUseCase: GetLocalProductsUseCase,
-    private val deleteLocalProductsUseCase: DeleteLocalProductsUseCase
+    private val deleteLocalProductsUseCase: DeleteLocalProductsUseCase,
+    private val saveProductUseCase: SaveProductUseCase
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -19,7 +21,8 @@ class ProductViewModelFactory(
             getRemoteProductsUseCase = getRemoteProductsUseCase,
             getRemoteProductDetailsUseCase = getRemoteProductDetailsUseCase,
             getLocalProductsUseCase = getLocalProductsUseCase,
-            deleteLocalProductsUseCase = deleteLocalProductsUseCase
+            deleteLocalProductsUseCase = deleteLocalProductsUseCase,
+            saveProductUseCase = saveProductUseCase
         ) as T
     }
 }
