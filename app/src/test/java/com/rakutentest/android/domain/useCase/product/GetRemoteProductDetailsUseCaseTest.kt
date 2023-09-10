@@ -26,11 +26,11 @@ class GetRemoteProductDetailsUseCaseTest {
      */
     @Test
     fun `retrieve product details`() = runTest {
-        val productDetails = getRemoteProductDetailsUseCase.execute(id = 6035914280)
-        Truth.assertThat(productDetails.data?.headline).isEqualTo("Samsung Galaxy S21 5G 128 Go Double SIM Violet")
-        Truth.assertThat(productDetails.data?.productId).isEqualTo(6035914280)
-        Truth.assertThat(productDetails.data?.salePrice).isEqualTo(689.99f)
-        Truth.assertThat(productDetails.data?.newBestPrice).isEqualTo(689.99f)
-        Truth.assertThat(productDetails.data?.usedBestPrice).isEqualTo(640f)
+        val productDetails = getRemoteProductDetailsUseCase.execute(id = 6035914280).data
+        Truth.assertThat(productDetails?.headline).isEqualTo("Samsung Galaxy S21 5G 128 Go Double SIM Violet")
+        Truth.assertThat(productDetails?.productId).isEqualTo(6035914280)
+        Truth.assertThat(productDetails?.salePrice).isEqualTo(689.99f)
+        Truth.assertThat(productDetails?.newBestPrice).isEqualTo(689.99f)
+        Truth.assertThat(productDetails?.usedBestPrice).isEqualTo(640f)
     }
 }
