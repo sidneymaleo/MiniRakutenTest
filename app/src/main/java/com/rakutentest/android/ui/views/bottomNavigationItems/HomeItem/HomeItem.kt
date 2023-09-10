@@ -101,7 +101,7 @@ fun HomeItem(
                     if (!isDark) {
                         this.background(Color.White)
                     } else {
-                        this
+                        this.background(MaterialTheme.colorScheme.surface)
                     }
 
                 }
@@ -151,7 +151,16 @@ fun HomeItem(
                     contentPadding = PaddingValues(
                         top = 20.dp,
                         bottom =  100.dp
-                    )
+                    ),
+                    modifier = Modifier.run {
+                        //we make white if we have the light mode
+                        if (!isDark) {
+                            this.background(Color.White)
+                        } else {
+                            this.background(MaterialTheme.colorScheme.surface)
+                        }
+
+                    }
                 ) {
                     items(screenState.productList) {product ->
                         ProductItem(

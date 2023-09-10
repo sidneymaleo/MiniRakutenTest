@@ -175,3 +175,5 @@ Vapp/src/main/java/com/rakutentest/android/domain/useCase/product/SaveProductUse
 Tapp/src/main/java/com/rakutentest/android/domain/useCase/buybox/SaveBuyBoxUseCase.kt,e/4/e45246b5decd315ddf799cbfdcf14c549b148c37
 }
 Mapp/src/main/java/com/rakutentest/android/ui/views/viewsError/NetworkError.kt,d/e/de1dc05212beb4bac5c377a6b6e09ce4678e70e3
+˜
+happ/src/main/java/com/rakutentest/android/ui/views/bottomNavigationItems/HomeItem/product/ProductUtil.kt,3/0/30444f71e229d227c6c9b756b26cfce8b1cb2b9e
