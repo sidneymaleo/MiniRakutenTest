@@ -14,4 +14,6 @@ sealed class ProductEvent {
     data class IsNetworkError(val errorMessage: String):  ProductEvent()
 
     data class IsNetworkConnected(val errorMessage: String): ProductEvent()
+
+    data class IsInternalError(val errorMessage: String): ProductEvent()
 }

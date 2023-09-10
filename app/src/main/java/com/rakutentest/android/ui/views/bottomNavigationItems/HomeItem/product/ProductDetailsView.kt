@@ -92,6 +92,9 @@ fun ProductDetailsView(
     var state by remember { mutableIntStateOf(0) }
     //It's a title of our tabs
     val titles = listOf("Description", "Commentaire du vendeur", "Avis")
+    var isRequested = rememberSaveable {
+        mutableStateOf(true)
+    }
 
     Scaffold(
         topBar = {
@@ -378,7 +381,8 @@ fun ProductDetailsView(
         content = { paddingValue -> }
     )
 
-    LaunchedEffect(key1 = screenState.isRequested) {
+    //isrequesred help us to make our http call juste one time
+    LaunchedEffect(key1 = isRequested) {
         //we call our api
         productViewModel.onEvent(
             ProductEvent.GetRemoteProductDetails(
@@ -386,6 +390,8 @@ fun ProductDetailsView(
                 id = 6035914280
             )
         )
+
+        isRequested.value = false
     }
 
 }

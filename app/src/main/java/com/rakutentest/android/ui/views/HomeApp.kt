@@ -17,13 +17,19 @@ import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ManageAccounts
 import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.Scaffold
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.rakutentest.android.R
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
+import com.rakutentest.android.ui.UIEvent.Event.ProductEvent
+import com.rakutentest.android.ui.UIEvent.UIEvent
 import com.rakutentest.android.ui.views.bottomNavigationItems.AccountItem
 import com.rakutentest.android.ui.views.bottomNavigationItems.BasketItem
 import com.rakutentest.android.ui.views.bottomNavigationItems.CashBackItem
@@ -31,6 +37,7 @@ import com.rakutentest.android.ui.views.bottomNavigationItems.HomeItem.HomeItem
 import com.rakutentest.android.ui.views.bottomNavigationItems.SellItem
 import com.rakutentest.android.ui.views.model.BottomNavigationItem
 import com.rakutentest.android.ui.views.model.Route
+import kotlinx.coroutines.flow.collectLatest
 
 
 @Composable
@@ -70,10 +77,13 @@ fun HomeApp(
 
     //this variable save the state of the bottom navigation current item
     var selectedItem = remember { mutableIntStateOf(0) }
+    val scaffoldState = rememberScaffoldState()
 
     Scaffold(
         topBar = {
             Scaffold(
+                scaffoldState = scaffoldState,
+                backgroundColor = MaterialTheme.colorScheme.background,
                 topBar = {
                     //we build our home top bar
                     TopAppBar(
@@ -130,6 +140,8 @@ fun HomeApp(
                         }
                     }
                 }
+
+
             }
 
         },
@@ -155,6 +167,9 @@ fun HomeApp(
                 }
             }
         }, floatingActionButton = {},
+        snackbarHost = {
+
+        },
         content = { paddingValue -> })
 }
 

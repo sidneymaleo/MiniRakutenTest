@@ -87,6 +87,8 @@ class ProductViewModel @Inject constructor(
                 isRequested = false
             )
         }
+
+
     }
 
 
@@ -173,6 +175,18 @@ class ProductViewModel @Inject constructor(
 
             }
 
+            is ProductEvent.IsInternalError -> {
+                viewModelScope.launch {
+                    _uiEventFlow.emit(
+                        UIEvent.ShowMessage(
+                            message = event.errorMessage
+                        )
+                    )
+                }
+            }
+
+
+
             //we control our network errors
             is ProductEvent.IsNetworkConnected -> {
                 viewModelScope.launch {
@@ -193,6 +207,8 @@ class ProductViewModel @Inject constructor(
                     )
                 }
             }
+
+            else -> {}
         }
     }
 }
