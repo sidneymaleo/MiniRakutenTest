@@ -30,7 +30,7 @@ class GetLocalProductsUseCaseTest {
         //we test if our product list retrieve good list
          getLocalProductsUseCase.execute().test {
              val localProducts = expectMostRecentItem()
-            Truth.assertThat(localProducts.size).isEqualTo(2)
+             Truth.assertThat(localProducts.size).isEqualTo(2)
              Truth.assertThat(localProducts[0].categoryRef).isEqualTo(194695)
         }
 
