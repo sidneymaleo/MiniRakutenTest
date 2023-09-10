@@ -5,7 +5,7 @@ import com.rakutentest.android.domain.repository.BuyBoxRepository
 import kotlinx.coroutines.flow.Flow
 
 class GetLocalBuyBoxUseCase(private val buyBoxRepository: BuyBoxRepository) {
-    fun execute(productId: Int): Flow<BuyboxRoom> {
+    fun execute(productId: Long): Flow<BuyboxRoom> {
         return buyBoxRepository.getBuyBox(productId = productId)
     }
 }

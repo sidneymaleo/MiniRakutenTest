@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 class BuyBoxLocalDataSourceImpl(
     private val buyBoxDAO: BuyBoxDAO
 ) : BuyBoxLocalDataSource{
-    override fun getLocalBuyBox(productId: Int): Flow<BuyboxRoom> {
+    override fun getLocalBuyBox(productId: Long): Flow<BuyboxRoom> {
        return  buyBoxDAO.getBuyBoxForProductId(productId = productId)
     }
 

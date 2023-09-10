@@ -27,7 +27,8 @@ class FactoryModule {
         getLocalProductsUseCase: GetLocalProductsUseCase,
         deleteLocalProductsUseCase: DeleteLocalProductsUseCase,
         saveProductUseCase: SaveProductUseCase,
-        saveBuyBoxUseCase: SaveBuyBoxUseCase
+        saveBuyBoxUseCase: SaveBuyBoxUseCase,
+        getLocalBuyBoxUseCase: GetLocalBuyBoxUseCase
     ): ProductViewModelFactory {
 
         return ProductViewModelFactory(
@@ -36,7 +37,8 @@ class FactoryModule {
             getLocalProductsUseCase = getLocalProductsUseCase,
             deleteLocalProductsUseCase = deleteLocalProductsUseCase,
             saveProductUseCase = saveProductUseCase,
-            saveBuyBoxUseCase = saveBuyBoxUseCase
+            saveBuyBoxUseCase = saveBuyBoxUseCase,
+            getLocalBuyBoxUseCase = getLocalBuyBoxUseCase
         )
     }
 

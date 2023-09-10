@@ -14,8 +14,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import androidx.compose.runtime.State
+import androidx.lifecycle.liveData
 import com.rakutentest.android.data.model.dataLocal.BuyboxRoom
 import com.rakutentest.android.data.model.dataLocal.ProductRoom
+import com.rakutentest.android.data.model.dataRemote.response.Buybox
+import com.rakutentest.android.data.model.dataRemote.response.Product
+import com.rakutentest.android.domain.useCase.buybox.GetLocalBuyBoxUseCase
 import com.rakutentest.android.domain.useCase.buybox.SaveBuyBoxUseCase
 import com.rakutentest.android.domain.useCase.product.SaveProductUseCase
 import com.rakutentest.android.presentation.util.isNetworkAvailable
@@ -23,6 +27,8 @@ import com.rakutentest.android.ui.UIEvent.Event.ProductEvent
 import com.rakutentest.android.ui.UIEvent.UIEvent
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 
 @HiltViewModel
 class ProductViewModel @Inject constructor(
@@ -31,7 +37,8 @@ class ProductViewModel @Inject constructor(
     private val getLocalProductsUseCase: GetLocalProductsUseCase,
     private val deleteLocalProductsUseCase: DeleteLocalProductsUseCase,
     private val saveProductUseCase: SaveProductUseCase,
-    private val saveBuyBoxUseCase: SaveBuyBoxUseCase
+    private val saveBuyBoxUseCase: SaveBuyBoxUseCase,
+    private val getLocalBuyBoxUseCase: GetLocalBuyBoxUseCase
 ) : ViewModel() {
 
     /**
@@ -69,6 +76,8 @@ class ProductViewModel @Inject constructor(
         keyWord: String
     ) = viewModelScope.launch {
         try {
+            //on supprime notre cache database avant de recharger les nouvelles données si l'utilisateur est en ligne
+            deleteLocalProductsUseCase.execute()
             val apiResult = getRemoteProductsUseCase.execute(keyWord = keyWord)
             apiResult.data?.let { products ->
                 /**
@@ -116,6 +125,8 @@ class ProductViewModel @Inject constructor(
                     )
                 }
 
+
+
             }
         } catch (e: Exception) {
             _screenStateProducts.value = _screenStateProducts.value.copy(
@@ -127,6 +138,18 @@ class ProductViewModel @Inject constructor(
         }
 
 
+    }
+
+    fun getProductList() = liveData {
+        getLocalProductsUseCase.execute().collect {
+            emit(it)
+        }
+    }
+
+    fun getBuyBox(productId: Long) = liveData {
+        getLocalBuyBoxUseCase.execute(productId = productId).collect {
+            emit(it)
+        }
     }
 
 
@@ -154,6 +177,7 @@ class ProductViewModel @Inject constructor(
             )
         }
     }
+
 
 
     //in this method we handle our product list event
@@ -206,7 +230,9 @@ class ProductViewModel @Inject constructor(
             }
 
             is ProductEvent.GetLocalProducts -> {
-                screenStateProducts.value.productList.forEach { product ->
+                // Before we clean our screen state product list
+                screenStateProducts.value.productList.removeAll(screenStateProducts.value.productList)
+                viewModelScope.launch {
 
                 }
             }
