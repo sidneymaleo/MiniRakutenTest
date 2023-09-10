@@ -2,6 +2,7 @@ package com.rakutentest.android.ui.views
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
@@ -22,6 +23,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -45,6 +47,9 @@ fun HomeApp(
     navController: NavHostController,
     productViewModel: ProductViewModel
 ) {
+
+    //we get the mode of our os theme
+    val isDark = isSystemInDarkTheme()
 
     //In this list we initialize our bottom navigation items
     val bottomNavigationItems = listOf(
@@ -83,11 +88,11 @@ fun HomeApp(
         topBar = {
             Scaffold(
                 scaffoldState = scaffoldState,
-                backgroundColor = MaterialTheme.colorScheme.background,
+                backgroundColor = if(!isDark) Color.White else MaterialTheme.colorScheme.background,
                 topBar = {
                     //we build our home top bar
                     TopAppBar(
-                        backgroundColor = MaterialTheme.colorScheme.surface,
+                        backgroundColor = if(!isDark) Color.White else MaterialTheme.colorScheme.surface,
                         navigationIcon = {
                             Image(
                                 modifier = Modifier.padding(start = 5.dp),

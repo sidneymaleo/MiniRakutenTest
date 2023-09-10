@@ -1,8 +1,6 @@
 
->kotlin:S1128"Remove this unused import.(ÊÒÅ­ùÿÿÿÿ8¤Ùë §1
->kotlin:S1128"Remove this unused import.(µ¢«Ïúÿÿÿÿ8¥Ùë §1
->kotlin:S1128"Remove this unused import.(®•±âùÿÿÿÿ8âÃ…¢§1
-9kotlin:S1128"Remove this unused import.(™òæÜ8ùı¡§1
-9kotlin:S1128"Remove this unused import.(¨û¼ş8¥Ùë §1
->kotlin:S1128 "Remove this unused import.(ÏõÁŞşÿÿÿÿ8¥Ùë §1
->kotlin:S1128#"Remove this unused import.(ò‰‘âşÿÿÿÿ8¥Ùë §1
+Mkotlin:S108î")Either remove or fill this block of code.(€¸¦’üÿÿÿÿ8©¼‹†¨1
+>kotlin:S1128"Remove this unused import.(ÊÒÅ­ùÿÿÿÿ8¯¼‹†¨1
+9kotlin:S1128"Remove this unused import.(™òæÜ8¯¼‹†¨1
+9kotlin:S1128!"Remove this unused import.(©ÎÖÅ8¯¼‹†¨1
+]kotlin:S6511¡"=Merge chained "if" statements into a single "when" statement.(Â­£Ö8²¼‹†¨1

@@ -165,3 +165,13 @@ Tapp/src/test/java/com/rakutentest/android/domain/repository/FakeProductReposito
 Sapp/src/test/java/com/rakutentest/android/domain/repository/FakeBuyBoxRepository.kt,4/5/4557547de62223a17a7655c6b6823cf7b4eb9866
 ‚
 Rapp/src/test/java/com/rakutentest/android/data/apiService/ProductAPIServiceTest.kt,2/3/232c3c819ec9ce2b27dc808d1a01c20787d1ad08
+~
+Napp/src/androidTest/java/com/rakutentest/android/data/db/dao/ProductDAOTest.kt,5/2/52e662643aa6c5a3d74ffd2e3c2dd2778b30a4ea
+}
+Mapp/src/androidTest/java/com/rakutentest/android/data/db/dao/BuyBoxDAOTest.kt,7/9/79f86806f0476be730803b16762bda2998066e0b
+†
+Vapp/src/main/java/com/rakutentest/android/domain/useCase/product/SaveProductUseCase.kt,3/a/3ae9ca73d8fed205cfe6bb8c06cf929b688e86ed
+„
+Tapp/src/main/java/com/rakutentest/android/domain/useCase/buybox/SaveBuyBoxUseCase.kt,e/4/e45246b5decd315ddf799cbfdcf14c549b148c37
+}
+Mapp/src/main/java/com/rakutentest/android/ui/views/viewsError/NetworkError.kt,d/e/de1dc05212beb4bac5c377a6b6e09ce4678e70e3

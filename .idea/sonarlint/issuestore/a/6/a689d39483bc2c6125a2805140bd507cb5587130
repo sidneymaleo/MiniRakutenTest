@@ -1,0 +1,14 @@
+
+dkotlin:S1172­"?Use "_" instead of this unused lambda parameter "paddingValue".(ò¢Úùÿÿÿÿ8òÀ†¨1
+Mkotlin:S108Ç")Either remove or fill this block of code.(€¸¦’üÿÿÿÿ8„Á†¨1
+>kotlin:S1128"Remove this unused import.(ÊÒÅ­ùÿÿÿÿ8Á†¨1
+>kotlin:S1128"Remove this unused import.(İß¶Âıÿÿÿÿ8Á†¨1
+9kotlin:S1128"Remove this unused import.(„ºö8Á†¨1
+9kotlin:S1128"Remove this unused import.(™òæÜ8Á†¨1
+9kotlin:S1128D"Remove this unused import.(²ª±8Á†¨1
+>kotlin:S1128K"Remove this unused import.(«Óø´øÿÿÿÿ8Á†¨1
+9kotlin:S1128L"Remove this unused import.(àåÆ÷8Á†¨1
+Hkotlin:S1874ƒ"#Deprecated code should not be used.(éƒí‘øÿÿÿÿ8’Á†¨1
+qkotlin:S3776["RRefactor this method to reduce its Cognitive Complexity from 45 to the 15 allowed.(ŞÌÃ8“Á†¨1
+Nkotlin:S1066À".Merge this "if" statement with the nested one.(ƒòÕç8–Á†¨1
+]kotlin:S6511Œ"=Merge chained "if" statements into a single "when" statement.(â¬¼ó8—Á†¨1

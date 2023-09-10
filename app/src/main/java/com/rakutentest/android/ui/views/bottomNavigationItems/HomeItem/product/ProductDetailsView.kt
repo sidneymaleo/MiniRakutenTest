@@ -7,6 +7,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -93,6 +94,9 @@ fun ProductDetailsView(
     productViewModel: ProductViewModel
 ) {
 
+    //we get the mode of our os theme
+    val isDark = isSystemInDarkTheme()
+
     //we get our screen state in our viewModel
     val screenState = productViewModel.screenStateProductDetails.value
     //we get our application context
@@ -111,6 +115,7 @@ fun ProductDetailsView(
 
     Scaffold(
         scaffoldState = scaffoldState,
+        backgroundColor = if(!isDark) Color.White else MaterialTheme.colorScheme.background,
         snackbarHost = {
             SnackbarHost(
             hostState = snackbarHostState,
@@ -119,10 +124,11 @@ fun ProductDetailsView(
                        },
         topBar = {
             Scaffold(
+                backgroundColor = if(!isDark) Color.White else MaterialTheme.colorScheme.background,
                 topBar = {
                     //we build our home top bar
                     TopAppBar(
-                        backgroundColor = MaterialTheme.colorScheme.surface,
+                        backgroundColor = if(!isDark) Color.White else MaterialTheme.colorScheme.surface,
                         navigationIcon = {
                             IconButton(onClick = {
                                 navController.navigateUp()
@@ -178,7 +184,16 @@ fun ProductDetailsView(
                  */
                 LazyColumn(
                     state = rememberLazyListState(),
-                    contentPadding = PaddingValues(top = 20.dp)
+                    contentPadding = PaddingValues(top = 20.dp),
+                    modifier = Modifier.run {
+                        //we make white if we have the light mode
+                        if (!isDark) {
+                            this.background(Color.White)
+                        } else {
+                            this
+                        }
+
+                    }
                 ) {
                     items(count = 1) {
                         //we test if product details is not null after
@@ -262,7 +277,7 @@ fun ProductDetailsView(
                                         .fillMaxWidth(),
                                     horizontalArrangement = Arrangement.Center
                                 ) {
-                                    Column {
+                                    Column{
                                         //We display our ProductStar
                                         ProductStarHandle(
                                             score = screenState.productDetails!!.globalRating.score,
@@ -330,7 +345,7 @@ fun ProductDetailsView(
                                     TabRow(
                                         selectedTabIndex = state,
                                         contentColor = Color.Black,
-                                        backgroundColor = MaterialTheme.colorScheme.background
+                                        backgroundColor = if(!isDark) Color.White else MaterialTheme.colorScheme.background
                                     ) {
                                         titles.forEachIndexed { index, title ->
                                             Tab(
