@@ -11,4 +11,8 @@
     <string name="new_value"> Neuf</string>
     <string name="is_connect_error">Vous êtes déconnecter, veuillez revoir votre connexion</string>
     <string name="network_error">Une erreur serveur vient de  se produire</string>
+    <string name="retry">Réessayer</string>
+    <string name="search_rakuten">Rechercher sur Rakuten</string>
+    <string name="description">Description</string>
+    <string name="seller_comment">Commentaire du vendeur</string>
 </resources>

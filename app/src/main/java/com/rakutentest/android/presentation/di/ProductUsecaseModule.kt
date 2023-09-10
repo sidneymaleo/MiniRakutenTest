@@ -5,6 +5,7 @@ import com.rakutentest.android.domain.useCase.product.DeleteLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductDetailsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductsUseCase
+import com.rakutentest.android.domain.useCase.product.SaveProductUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,6 +52,16 @@ class ProductUsecaseModule {
         productRepository: ProductRepository
     ): GetRemoteProductDetailsUseCase {
         return GetRemoteProductDetailsUseCase(
+            productRepository = productRepository
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideSaveProductUseCase(
+        productRepository: ProductRepository
+    ): SaveProductUseCase {
+        return SaveProductUseCase(
             productRepository = productRepository
         )
     }

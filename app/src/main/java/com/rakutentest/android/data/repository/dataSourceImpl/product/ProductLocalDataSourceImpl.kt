@@ -16,5 +16,9 @@ class ProductLocalDataSourceImpl(
         productDAO.deleteAllProduct()
     }
 
+    override suspend fun insertProduct(product: ProductRoom) {
+        productDAO.insert(product = product)
+    }
+
 
 }

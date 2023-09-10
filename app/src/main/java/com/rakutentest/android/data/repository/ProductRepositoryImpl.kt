@@ -63,4 +63,8 @@ class ProductRepositoryImpl(
     override suspend fun deleteProducts() {
         productLocalDataSource.deleteLocalProducts()
     }
+
+    override suspend fun insertProduct(product: ProductRoom) {
+        productLocalDataSource.insertProduct(product = product)
+    }
 }

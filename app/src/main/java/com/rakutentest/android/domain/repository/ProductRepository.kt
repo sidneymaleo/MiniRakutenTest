@@ -19,4 +19,6 @@ interface ProductRepository {
     fun getLocalProducts(): Flow<List<ProductRoom>>
 
     suspend fun deleteProducts()
+
+    suspend fun insertProduct(product: ProductRoom)
 }

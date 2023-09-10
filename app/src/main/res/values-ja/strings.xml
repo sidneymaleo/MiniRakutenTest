@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">RakutenTest</string>
+    <string name="e_commerce_all">すべての人のための電子商取引</string>
+    <string name="home">いらっしゃいませ</string>
+    <string name="cash_back">キャッシュバック</string>
+    <string name="basket">Panier</string>
+    <string name="sell">売る</string>
+    <string name="account">アカウント</string>
+    <string name="occasion">から使用 </string>
+    <string name="notice">知らせ</string>
+    <string name="new_value"> 九</string>
+    <string name="is_connect_error">接続が切断されました。接続を確認してください</string>
+    <string name="network_error">サーバーエラーが発生しました</string>
+    <string name="retry">もう一度やり直してください</string>
+    <string name="search_rakuten">楽天で探す</string>
+    <string name="description">説明</string>
+    <string name="seller_comment">販売者のコメント</string>
+</resources>

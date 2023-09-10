@@ -16,7 +16,7 @@ interface BuyBoxDAO {
         INNER JOIN product_data_table ON buybox_data_table.buybox_productId = product_data_table.product_id
         WHERE product_data_table.product_id = :productId
     """)
-    fun getBuyBoxForProductId(productId: Int): Flow<BuyboxRoom>
+    fun getBuyBoxForProductId(productId: Long): Flow<BuyboxRoom>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(buybox: BuyboxRoom)

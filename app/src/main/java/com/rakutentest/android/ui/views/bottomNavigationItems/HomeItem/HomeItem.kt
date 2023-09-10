@@ -40,8 +40,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavHostController
 import com.rakutentest.android.R
+import com.rakutentest.android.data.model.dataRemote.response.Buybox
+import com.rakutentest.android.data.model.dataRemote.response.Product
+import com.rakutentest.android.presentation.util.isNetworkAvailable
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
 import com.rakutentest.android.ui.UIEvent.Event.ProductEvent
 import com.rakutentest.android.ui.UIEvent.UIEvent
@@ -67,9 +71,11 @@ fun HomeItem(
         mutableStateOf(true)
     }
 
-    val snackbarHostState = remember { SnackbarHostState() }
-    val scope = rememberCoroutineScope()
+    var isNetworkFailed = rememberSaveable {
+        mutableStateOf(true)
+    }
 
+    val snackbarHostState = remember { SnackbarHostState() }
 
     val scaffoldState = rememberScaffoldState()
 
@@ -82,7 +88,9 @@ fun HomeItem(
         ) }
     ) { paddingValue ->
         Column(
-            modifier = Modifier.fillMaxSize().padding(paddingValue)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValue)
         ) {
             OutlinedTextField(
                 value = searchProduct,
@@ -93,7 +101,7 @@ fun HomeItem(
                 },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 placeholder = {
-                    Text(text = "Rechercher sur Rakuten")
+                    Text(text = stringResource(R.string.search_rakuten) )
                 },
                 leadingIcon = {
                     IconButton(onClick = { }) {
@@ -116,6 +124,7 @@ fun HomeItem(
                 SpinnerCenterVerticalHorizontal()
             }
 
+
             Row {
 
                 /**
@@ -137,28 +146,7 @@ fun HomeItem(
                         )
                     }
 
-                    if (!screenState.isNetworkConnected) {
-                        items(count = 1) {
-                            NetworkError(
-                                title = stringResource(R.string.network_error),
-                                iconValue = 0
-                            )
-                        }
-                    } else if (screenState.isNetworkError) {
-                        items(count = 1) {
-                            NetworkError(
-                                title = stringResource(R.string.is_connect_error),
-                                iconValue = 1
-                            )
-                        }
-                    } else if (screenState.isInternalError) {
-                        items(count = 1) {
-                            NetworkError(
-                                title = "Internal Error, Error 500",
-                                iconValue = 1
-                            )
-                        }
-                    }
+
                 }
             }
         }
@@ -170,13 +158,13 @@ fun HomeItem(
 
 
     //we observe our network state
-    /*if (screenState.isNetworkError) {
+    if (screenState.isNetworkError) {
         productViewModel.onEvent(ProductEvent.IsNetworkError(context.getString(R.string.is_connect_error)))
-    } else */if (!screenState.isNetworkConnected) {
+    } else if (!screenState.isNetworkConnected) {
         productViewModel.onEvent(ProductEvent.IsNetworkConnected(context.getString(R.string.is_connect_error)))
-    } /*else if (screenState.isInternalError) {
+    } else if (screenState.isInternalError) {
         productViewModel.onEvent(ProductEvent.IsInternalError("Internal Error, Error 500"))
-    }*/
+    }
 
 
     //isrequesred help us to make our http call juste one time
@@ -186,21 +174,73 @@ fun HomeItem(
         isRequested.value = false
     }
 
-    LaunchedEffect(key1 = !screenState.isNetworkConnected) {
-        productViewModel.uiEventFlow.collectLatest { event ->
-            when (event) {
-                is UIEvent.ShowMessage -> {
-                    snackbarHostState.showSnackbar(
-                        message = event.message,
-                        duration = SnackbarDuration.Long,
-                        actionLabel = "Réessayer"
-                    )
-                }
+    /**
+     * we test if we are offline to load our sqlite database datas
+     */
+    if (!isNetworkAvailable(context)) {
+        //we load our locale datas
+        LaunchedEffect(key1 = isNetworkFailed) {
 
-                else -> {}
+
+            //we get our product list
+            productViewModel.getProductList().observe(context as LifecycleOwner) {productListRoom->
+
+                // Before we clean our screen state product list
+                screenState.productList.removeAll(screenState.productList)
+
+                productListRoom.forEach { productRoom ->
+                    productRoom.id?.let {
+                        // We get our buy box in the database
+                        productViewModel.getBuyBox(it).observe(context as LifecycleOwner) { buyBox->
+                            // After we load our cache data in our list
+                            screenState.productList.add(
+                                Product(
+                                    id = productRoom.id!!,
+                                    newBestPrice = productRoom.newBestPrice,
+                                    usedBestPrice =  productRoom.usedBestPrice,
+                                    headline = productRoom.headline,
+                                    reviewsAverageNote = productRoom.reviewsAverageNote,
+                                    nbReviews = productRoom.nbReviews,
+                                    categoryRef = productRoom.categoryRef,
+                                    imagesUrls = productRoom.imagesUrls,
+                                    buybox = Buybox(
+                                        salePrice = buyBox.salePrice,
+                                        advertType = buyBox.advertType,
+                                        advertQuality = buyBox.advertQuality,
+                                        saleCrossedPrice = buyBox.saleCrossedPrice,
+                                        salePercentDiscount = buyBox.salePercentDiscount,
+                                        isRefurbished = buyBox.isRefurbished
+                                    )
+                                )
+                            )
+                        }
+                    }
+
+                }
+            }
+
+            //we close our block
+            isNetworkFailed.value = false
+        }
+
+
+
+        LaunchedEffect(key1 = !screenState.isNetworkConnected) {
+            productViewModel.uiEventFlow.collectLatest { event ->
+                when (event) {
+                    is UIEvent.ShowMessage -> {
+                        snackbarHostState.showSnackbar(
+                            message = event.message,
+                            duration = SnackbarDuration.Long
+                        )
+                    }
+
+                    else -> {}
+                }
             }
         }
     }
+
 
 
 }
