@@ -10,7 +10,7 @@ import com.rakutentest.android.data.model.dataRemote.response.Product
  * this entity help our to observe the state of our product details screen
  */
 data class ProductListScreenState (
-    var isNetworkConnected: Boolean = false,
+    var isNetworkConnected: Boolean = true,
     var isNetworkError: Boolean = false,
     var productList : SnapshotStateList<Product> = mutableStateListOf(),
     var productRoomList: List<ProductRoom> = mutableListOf(),
