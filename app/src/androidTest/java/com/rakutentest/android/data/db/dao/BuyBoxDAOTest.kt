@@ -142,6 +142,28 @@ class BuyBoxDAOTest {
         }
     }
 
+    @Test
+    fun delete_all_buy_box() = runTest {
+        //we insert our buy box before to delete it
+        insertBuyBox()
+        //we test we have really two item
+        dao.getAllBuyBox().test {
+            //we get our flow item
+            val products = awaitItem()
+            Truth.assertThat(products.size).isEqualTo(2)
+            cancel()
+        }
+        //we delete our all product
+        dao.deleteAllBuyBox()
+        //we test if we have 0 element in our products list
+        dao.getAllBuyBox().test {
+            //we get our flow item
+            val buyboxList = awaitItem()
+            Truth.assertThat(buyboxList.size).isEqualTo(0)
+            cancel()
+        }
+    }
+
     //here we close our database
     @After
     fun cleanup() {
