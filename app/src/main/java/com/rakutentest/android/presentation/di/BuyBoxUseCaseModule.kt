@@ -2,6 +2,7 @@ package com.rakutentest.android.presentation.di
 
 import com.rakutentest.android.domain.repository.BuyBoxRepository
 import com.rakutentest.android.domain.useCase.buybox.GetLocalBuyBoxUseCase
+import com.rakutentest.android.domain.useCase.buybox.SaveBuyBoxUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,6 +19,16 @@ class BuyBoxUseCaseModule {
         buyBoxRepository: BuyBoxRepository
     ): GetLocalBuyBoxUseCase {
         return GetLocalBuyBoxUseCase(
+            buyBoxRepository = buyBoxRepository
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideBuyBoxUseCase(
+        buyBoxRepository: BuyBoxRepository
+    ): SaveBuyBoxUseCase {
+        return SaveBuyBoxUseCase(
             buyBoxRepository = buyBoxRepository
         )
     }

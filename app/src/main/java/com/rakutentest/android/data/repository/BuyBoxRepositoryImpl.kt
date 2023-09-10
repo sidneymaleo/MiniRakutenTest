@@ -11,4 +11,8 @@ class BuyBoxRepositoryImpl(
     override fun getBuyBox(productId: Int): Flow<BuyboxRoom> {
         return buyBoxLocalDataSource.getLocalBuyBox(productId = productId)
     }
+
+    override suspend fun insertBuyBox(buyBox: BuyboxRoom) {
+        buyBoxLocalDataSource.insertBuyBox(buyBox)
+    }
 }

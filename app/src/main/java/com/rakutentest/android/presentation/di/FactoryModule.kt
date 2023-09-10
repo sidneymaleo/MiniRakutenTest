@@ -1,6 +1,7 @@
 package com.rakutentest.android.presentation.di
 
 import com.rakutentest.android.domain.useCase.buybox.GetLocalBuyBoxUseCase
+import com.rakutentest.android.domain.useCase.buybox.SaveBuyBoxUseCase
 import com.rakutentest.android.domain.useCase.product.DeleteLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductDetailsUseCase
@@ -25,7 +26,8 @@ class FactoryModule {
         getRemoteProductDetailsUseCase: GetRemoteProductDetailsUseCase,
         getLocalProductsUseCase: GetLocalProductsUseCase,
         deleteLocalProductsUseCase: DeleteLocalProductsUseCase,
-        saveProductUseCase: SaveProductUseCase
+        saveProductUseCase: SaveProductUseCase,
+        saveBuyBoxUseCase: SaveBuyBoxUseCase
     ): ProductViewModelFactory {
 
         return ProductViewModelFactory(
@@ -33,7 +35,8 @@ class FactoryModule {
             getRemoteProductDetailsUseCase = getRemoteProductDetailsUseCase,
             getLocalProductsUseCase = getLocalProductsUseCase,
             deleteLocalProductsUseCase = deleteLocalProductsUseCase,
-            saveProductUseCase = saveProductUseCase
+            saveProductUseCase = saveProductUseCase,
+            saveBuyBoxUseCase = saveBuyBoxUseCase
         )
     }
 

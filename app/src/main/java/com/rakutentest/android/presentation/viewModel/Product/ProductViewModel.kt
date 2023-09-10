@@ -14,7 +14,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import androidx.compose.runtime.State
+import com.rakutentest.android.data.model.dataLocal.BuyboxRoom
 import com.rakutentest.android.data.model.dataLocal.ProductRoom
+import com.rakutentest.android.domain.useCase.buybox.SaveBuyBoxUseCase
 import com.rakutentest.android.domain.useCase.product.SaveProductUseCase
 import com.rakutentest.android.presentation.util.isNetworkAvailable
 import com.rakutentest.android.ui.UIEvent.Event.ProductEvent
@@ -28,7 +30,8 @@ class ProductViewModel @Inject constructor(
     private val getRemoteProductDetailsUseCase: GetRemoteProductDetailsUseCase,
     private val getLocalProductsUseCase: GetLocalProductsUseCase,
     private val deleteLocalProductsUseCase: DeleteLocalProductsUseCase,
-    private val saveProductUseCase: SaveProductUseCase
+    private val saveProductUseCase: SaveProductUseCase,
+    private val saveBuyBoxUseCase: SaveBuyBoxUseCase
 ) : ViewModel() {
 
     /**
@@ -84,6 +87,7 @@ class ProductViewModel @Inject constructor(
                 //here we insert our product
 
                 products.products.forEach { product ->
+                    //here we save in our product table
                     saveProductUseCase.execute(product =
                         ProductRoom(
                             id = product.id,
@@ -94,6 +98,20 @@ class ProductViewModel @Inject constructor(
                             nbReviews = product.nbReviews,
                             categoryRef = product.categoryRef,
                             imagesUrls = product.imagesUrls
+                        )
+                    )
+                    //here we save in our buybox
+                    saveBuyBoxUseCase.execute(buyBox =
+                        BuyboxRoom(
+                            //the id is autoIncrement
+                            id = 0,
+                            salePrice = product.buybox.salePrice,
+                            advertType = product.buybox.advertType,
+                            advertQuality = product.buybox.advertQuality,
+                            saleCrossedPrice = product.buybox.saleCrossedPrice,
+                            salePercentDiscount = product.buybox.salePercentDiscount,
+                            isRefurbished = product.buybox.isRefurbished,
+                            productId = product.id
                         )
                     )
                 }

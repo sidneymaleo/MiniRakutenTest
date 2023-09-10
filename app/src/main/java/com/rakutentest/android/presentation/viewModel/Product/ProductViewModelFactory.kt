@@ -2,6 +2,7 @@ package com.rakutentest.android.presentation.viewModel.Product
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.rakutentest.android.domain.useCase.buybox.SaveBuyBoxUseCase
 import com.rakutentest.android.domain.useCase.product.DeleteLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetLocalProductsUseCase
 import com.rakutentest.android.domain.useCase.product.GetRemoteProductDetailsUseCase
@@ -13,7 +14,8 @@ class ProductViewModelFactory(
     private val getRemoteProductDetailsUseCase: GetRemoteProductDetailsUseCase,
     private val getLocalProductsUseCase: GetLocalProductsUseCase,
     private val deleteLocalProductsUseCase: DeleteLocalProductsUseCase,
-    private val saveProductUseCase: SaveProductUseCase
+    private val saveProductUseCase: SaveProductUseCase,
+    private val saveBuyBoxUseCase: SaveBuyBoxUseCase
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -22,7 +24,8 @@ class ProductViewModelFactory(
             getRemoteProductDetailsUseCase = getRemoteProductDetailsUseCase,
             getLocalProductsUseCase = getLocalProductsUseCase,
             deleteLocalProductsUseCase = deleteLocalProductsUseCase,
-            saveProductUseCase = saveProductUseCase
+            saveProductUseCase = saveProductUseCase,
+            saveBuyBoxUseCase = saveBuyBoxUseCase
         ) as T
     }
 }
