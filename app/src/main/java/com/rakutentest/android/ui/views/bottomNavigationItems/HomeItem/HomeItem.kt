@@ -240,31 +240,28 @@ fun HomeItem(
                 }
             }
 
-
+            //we close our block
+            isNetworkFailed.value = false
         }
 
-        //we close our block
-        isNetworkFailed.value = false
-    }
 
 
+        LaunchedEffect(key1 = !screenState.isNetworkConnected) {
+            productViewModel.uiEventFlow.collectLatest { event ->
+                when (event) {
+                    is UIEvent.ShowMessage -> {
+                        snackbarHostState.showSnackbar(
+                            message = event.message,
+                            duration = SnackbarDuration.Long
+                        )
+                    }
 
-
-    LaunchedEffect(key1 = !screenState.isNetworkConnected) {
-        productViewModel.uiEventFlow.collectLatest { event ->
-            when (event) {
-                is UIEvent.ShowMessage -> {
-                    snackbarHostState.showSnackbar(
-                        message = event.message,
-                        duration = SnackbarDuration.Long,
-                        actionLabel = "Réessayer"
-                    )
+                    else -> {}
                 }
-
-                else -> {}
             }
         }
     }
+
 
 
 }
