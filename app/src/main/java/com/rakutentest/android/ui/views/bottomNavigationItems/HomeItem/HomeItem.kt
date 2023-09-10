@@ -146,28 +146,7 @@ fun HomeItem(
                         )
                     }
 
-                    /*if (!screenState.isNetworkConnected) {
-                        items(count = 1) {
-                            NetworkError(
-                                title = stringResource(R.string.network_error),
-                                iconValue = 0
-                            )
-                        }
-                    } else if (screenState.isNetworkError) {
-                        items(count = 1) {
-                            NetworkError(
-                                title = stringResource(R.string.is_connect_error),
-                                iconValue = 1
-                            )
-                        }
-                    } else if (screenState.isInternalError) {
-                        items(count = 1) {
-                            NetworkError(
-                                title = "Internal Error, Error 500",
-                                iconValue = 1
-                            )
-                        }
-                    }*/
+
                 }
             }
         }

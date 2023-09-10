@@ -40,10 +40,14 @@ import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.NotificationsNone
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Share
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.LaunchedEffect
@@ -75,8 +79,13 @@ import com.rakutentest.android.R
 import com.rakutentest.android.data.model.dataRemote.response.enums.ProductImageSizeEnum
 import com.rakutentest.android.presentation.viewModel.Product.ProductViewModel
 import com.rakutentest.android.ui.UIEvent.Event.ProductEvent
+import com.rakutentest.android.ui.UIEvent.UIEvent
 import com.rakutentest.android.ui.views.progressbar.SpinnerCenterVerticalHorizontal
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
+import androidx.compose.material.Scaffold
+import androidx.compose.ui.res.stringResource
+import com.rakutentest.android.ui.views.viewsError.NetworkError
 
 @Composable
 fun ProductDetailsView(
@@ -96,7 +105,18 @@ fun ProductDetailsView(
         mutableStateOf(true)
     }
 
+    val scaffoldState = rememberScaffoldState()
+
+    val snackbarHostState = remember { SnackbarHostState() }
+
     Scaffold(
+        scaffoldState = scaffoldState,
+        snackbarHost = {
+            SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier.padding(bottom = 80.dp)
+        )
+                       },
         topBar = {
             Scaffold(
                 topBar = {
@@ -371,6 +391,34 @@ fun ProductDetailsView(
                             }
                         }
                     }
+
+                    if (!screenState.isLoad) {
+                        if (!screenState.isNetworkConnected) {
+                            items(count = 1) {
+                                NetworkError(
+                                    title = stringResource(R.string.network_error),
+                                    iconValue = 1,
+                                    productViewModel = productViewModel
+                                )
+                            }
+                        } else if (screenState.isNetworkError) {
+                            items(count = 1) {
+                                NetworkError(
+                                    title = stringResource(R.string.is_connect_error),
+                                    iconValue = 1,
+                                    productViewModel = productViewModel
+                                )
+                            }
+                        } else if (screenState.isInternalError) {
+                            items(count = 1) {
+                                NetworkError(
+                                    title = "Internal Error, Error 500",
+                                    iconValue = 1,
+                                    productViewModel = productViewModel
+                                )
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -392,6 +440,21 @@ fun ProductDetailsView(
         )
 
         isRequested.value = false
+    }
+
+    LaunchedEffect(key1 = !screenState.isNetworkConnected) {
+        productViewModel.uiEventFlow.collectLatest { event ->
+            when (event) {
+                is UIEvent.ShowMessage -> {
+                    snackbarHostState.showSnackbar(
+                        message = event.message,
+                        duration = SnackbarDuration.Long
+                    )
+                }
+
+                else -> {}
+            }
+        }
     }
 
 }
@@ -441,7 +504,7 @@ fun DotsIndicator(
 
 
 //here we build our corousel layout
-@OptIn(ExperimentalPagerApi::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CarouselProductImage(
     modifier: Modifier = Modifier,
