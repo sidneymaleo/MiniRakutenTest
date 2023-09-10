@@ -1,0 +1,140 @@
+{
+  "productId": 6035914280,
+  "salePrice": 689.99,
+  "newBestPrice": 689.99,
+  "usedBestPrice": 640,
+  "seller": {
+    "id": 11773507564,
+    "login": "Pixel-Tech"
+  },
+  "quality": "NEW",
+  "type": "NEW",
+  "sellerComment": "Carte SIM unique, version US, compatible avec les opérateurs français. Avant l'expédition, nous vérifierons si le téléphone est en bon état et fournirons un ensemble complet d'accessoires compatibles français (y compris les prises de charge européennes) + film de protection et coque de téléphone. Remarque: Expédition depuis la Chine, une garantie de 9 à 19 jours ouvrables / un an est fournie.",
+  "headline": "Samsung Galaxy S21 5G 128 Go Double SIM Violet",
+  "description": "<li class=\"sub\"><span class=\"label\">Fabricant&nbsp;: </span><em class=\"value\"><a class=\"ft_link\" href=\"/s/samsung\">Samsung</a></em></li>    <li class=\"sub\"><span class=\"label\">Référence fabricant&nbsp;: </span><em class=\"value\">SM-G991BZVDEUB - SM-G991BZVDEUH</em></li><li class=\"sub\"><span class=\"label\">Poids&nbsp;: </span><em class=\"value\">169</em></li><li class=\"sub\"><span class=\"label\">Interface sans fil&nbsp;: </span><em class=\"value\">NFC</em></li>\r\n\r\n<p>Produit soumis à la Rémunération Pour Copie Privée.&nbsp;<a href=\"javascript:void PM.BT.ubw('http',58,47,47,'www',46,'culturecommunication',46,'gouv',46,'fr',47,'Politiques-ministerielles',47,'Propriete-litteraire-et-artistique',47,'Commission-pour-la-remuneration-de-la-copie-privee',47,'Notice-explicative-pour-les-acquereurs-de-supports')\">En savoir plus</a></p>\r\n<p><a href=\"javascript:void PM.BT.ubw('http',58,47,47,'www',46,'culturecommunication',46,'gouv',46,'fr',47,'Politiques-ministerielles',47,'Propriete-litteraire-et-artistique',47,'Commission-pour-la-remuneration-de-la-copie-privee',47,'Questions-pratiques',47,'Les-montants-de-la-Remuneration-pour-Copie-Privee')\">Voir le montant de la Rémunération Pour Copie Privée</a></p>",
+  "categories": [
+    "Tel-PDA",
+    "Telephones-mobiles"
+  ],
+  "globalRating": {
+    "score": 4.6,
+    "nbReviews": 94
+  },
+  "images": [
+    {
+      "imagesUrls": {
+        "entry": [
+          {
+            "size": "ORIGINAL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299896.jpg"
+          },
+          {
+            "size": "SMALL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299896_S.jpg"
+          },
+          {
+            "size": "MEDIUM",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299896_M.jpg"
+          },
+          {
+            "size": "LARGE",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299896_L.jpg"
+          }
+        ]
+      },
+      "id": 1673299896
+    },
+    {
+      "imagesUrls": {
+        "entry": [
+          {
+            "size": "ORIGINAL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299897.jpg"
+          },
+          {
+            "size": "SMALL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299897_S.jpg"
+          },
+          {
+            "size": "MEDIUM",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299897_M.jpg"
+          },
+          {
+            "size": "LARGE",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299897_L.jpg"
+          }
+        ]
+      },
+      "id": 1673299897
+    },
+    {
+      "imagesUrls": {
+        "entry": [
+          {
+            "size": "ORIGINAL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299898.jpg"
+          },
+          {
+            "size": "SMALL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299898_S.jpg"
+          },
+          {
+            "size": "MEDIUM",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299898_M.jpg"
+          },
+          {
+            "size": "LARGE",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299898_L.jpg"
+          }
+        ]
+      },
+      "id": 1673299898
+    },
+    {
+      "imagesUrls": {
+        "entry": [
+          {
+            "size": "ORIGINAL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299899.jpg"
+          },
+          {
+            "size": "SMALL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299899_S.jpg"
+          },
+          {
+            "size": "MEDIUM",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299899_M.jpg"
+          },
+          {
+            "size": "LARGE",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299899_L.jpg"
+          }
+        ]
+      },
+      "id": 1673299899
+    },
+    {
+      "imagesUrls": {
+        "entry": [
+          {
+            "size": "ORIGINAL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299900.jpg"
+          },
+          {
+            "size": "SMALL",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299900_S.jpg"
+          },
+          {
+            "size": "MEDIUM",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299900_M.jpg"
+          },
+          {
+            "size": "LARGE",
+            "url": "https://fr.shopping.rakuten.com/photo/1673299900_L.jpg"
+          }
+        ]
+      },
+      "id": 1673299900
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 package com.rakutentest.android.data.model.dataLocal
 
 import androidx.room.*
+import com.rakutentest.android.data.model.dataRemote.response.Product
 
 @Entity(
     tableName = "product_data_table"
