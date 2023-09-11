@@ -218,4 +218,8 @@ class FakeProductRepository: ProductRepository {
     override suspend fun deleteProducts() {
         productRooms.removeAll(productRooms)
     }
+
+    override suspend fun insertProduct(product: ProductRoom) {
+        TODO("Not yet implemented")
+    }
 }

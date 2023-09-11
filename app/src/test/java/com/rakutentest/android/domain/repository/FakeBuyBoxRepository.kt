@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.flow
 
 class FakeBuyBoxRepository: BuyBoxRepository {
 
-    override fun getBuyBox(productId: Int): Flow<BuyboxRoom> {
+    override fun getBuyBox(productId: Long): Flow<BuyboxRoom> {
         return flow {
             emit(
                 BuyboxRoom(
@@ -21,6 +21,10 @@ class FakeBuyBoxRepository: BuyBoxRepository {
                 )
             )
         }
+    }
+
+
+    override suspend fun insertBuyBox(buyBox: BuyboxRoom) {
     }
 
 }
